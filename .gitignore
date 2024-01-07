@@ -1,7 +1,10 @@
 # Prerequisites
 *.d
 dynfoc
+bnp_parser
+dbg.h
 *.png
+
 
 # Object files
 *.o
