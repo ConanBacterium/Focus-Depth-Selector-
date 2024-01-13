@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < nImgs; imgidx++) {
-            snprintf(filename, sizeof(filename), "../tape1/%d/%d.bmp", bandidx, imgidx);
+            snprintf(filename, sizeof(filename), "../34/tape2/%d/%d.bmp", bandidx+8, imgidx);
             img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
             if (!img) {
                 printf("Could not open or find the image.\n");

@@ -2,8 +2,11 @@
 *.d
 dynfoc
 bnp_parser
+playground
+playground/*
 dbg.h
 *.png
+*.bmp
 
 
 # Object files

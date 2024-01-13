@@ -125,3 +125,210 @@ DEBUG tests/imgtools_tests.c:all_tests:90:
 DEBUG tests/imgtools_tests.c:main:95: ----- RUNNING: ./tests/imgtools_tests
 DEBUG tests/imgtools_tests.c:all_tests:90: 
 ----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:95: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:90: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:98: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:98: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:98: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:98: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:99: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+[ERROR] (loadBnp:src/imgtools.c:52: errno: No such file or directory) error opening file
+[ERROR] (test_loadBnp_destroyImage:tests/imgtools_tests.c:80: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:99: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+[ERROR] (loadBnp:src/imgtools.c:52: errno: No such file or directory) error opening file
+[ERROR] (test_loadBnp_destroyImage:tests/imgtools_tests.c:80: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:99: 
+----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+[ERROR] (loadBnp:src/imgtools.c:52: errno: No such file or directory) error opening file
+[ERROR] (test_loadBnp_destroyImage:tests/imgtools_tests.c:80: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:99: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+[ERROR] (loadBnp:src/imgtools.c:52: errno: No such file or directory) error opening file
+[ERROR] (test_loadBnp_destroyImage:tests/imgtools_tests.c:80: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:99: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+[ERROR] (loadBnp:src/imgtools.c:52: errno: No such file or directory) error opening file
+[ERROR] (test_loadBnp_destroyImage:tests/imgtools_tests.c:80: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:99: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:93: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:94: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:main:135: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:128: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:129: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:130: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:135: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:128: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:129: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:130: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:136: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:129: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:130: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:137: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:130: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:132: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:138: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:132: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:133: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:138: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:132: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:133: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:138: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:132: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:133: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:138: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:131: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:132: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:133: 
+----- test_switchLineOrder
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:155: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:149: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:150: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:152: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:145: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:152: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:145: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:152: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:145: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:152: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:145: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:153: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:153: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_switchLineOrder
+[ERROR] (test_switchLineOrder:tests/imgtools_tests.c:132: errno: None) switchLineOrder didn't reverse
+DEBUG tests/imgtools_tests.c:main:153: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:146: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_switchLineOrder
+[ERROR] (test_switchLineOrder:tests/imgtools_tests.c:132: errno: None) switchLineOrder didn't reverse
+DEBUG tests/imgtools_tests.c:main:154: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:147: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:149: 
+----- test_switchLineOrder

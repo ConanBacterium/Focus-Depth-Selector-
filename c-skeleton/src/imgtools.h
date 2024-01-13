@@ -29,6 +29,7 @@ typedef struct __attribute__((__packed__)) {
 typedef struct __attribute__((__packed__)) {
     FILEHEADER fh;
     INFOHEADER ih;
+    int isBottomUp;
     unsigned char *imageData;
 } IMAGE;
 
@@ -40,6 +41,7 @@ typedef struct __attribute__((__packed__)) {
 
 int destroyImage(IMAGE *img); 
 int loadBnp(IMAGE *img, char *path);
+int switchLineOrder(IMAGE *img);
 
 int laplacianTransform(unsigned char *src, unsigned char *target, int width, int height);
 

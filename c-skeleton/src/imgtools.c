@@ -39,16 +39,15 @@ int laplacianTransform(unsigned char *src, unsigned char *target, int width, int
 }
 
 int destroyImage(IMAGE *img) {
-    free(&img->fh);
-    free(&img->ih); 
-    free(&img->imageData);
-    free(&img); 
+    free(img->imageData);
+    free(img); 
 
     return 0; 
 }
 
 int loadBnp(IMAGE *img, char *path) {
     // TODO: CHECK NULL TERMINATED PATH
+    img->isBottomUp = 1;
     FILE *imgf = fopen(path, "rb");
     check(imgf!=NULL, "error opening file");
     int nBytesRead = fread(&img->fh, sizeof(unsigned char), sizeof(FILEHEADER), imgf);
@@ -71,4 +70,25 @@ int loadBnp(IMAGE *img, char *path) {
     return 0;
 error: 
     return 1; 
+}
+
+int switchLineOrder(IMAGE *img) {
+    int width = img->ih.width;
+    int height = img->ih.height; 
+
+    unsigned char *tempRow = malloc(width); // malloc... not so good, costly operation for so little a thing
+    check_mem(tempRow);
+    
+    for (int row = 0; row < height / 2; row++) {
+        int swapRow = height - row - 1;
+        memcpy(tempRow, &img->imageData[row * width], width);
+        memcpy(&img->imageData[row * width], &img->imageData[swapRow * width], width);
+        memcpy(&img->imageData[swapRow * width], tempRow, width);
+    }
+
+    free(tempRow);
+
+    return 0;
+error: 
+    return -1;
 }
