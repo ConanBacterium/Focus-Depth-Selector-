@@ -12,7 +12,7 @@ TESTS=$(patsubst %.c, %, $(TEST_SRC))
 PROGRAMS_SRC=$(wildcard bin/*.c)
 PROGRAMS=$(patsubst %.c,%,$(PROGRAMS_SRC))
 
-TARGET=build/libYOUR_LIBRARY.a
+TARGET=build/libDynFoc.a
 SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
 
 # The Target Build

@@ -1,0 +1,127 @@
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:17: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:12: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:18: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:13: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:23: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:18: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+DEBUG tests/imgtools_tests.c:main:21: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:16: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:7: errno: None) laplacianTransform rc != 0
+DEBUG tests/imgtools_tests.c:main:21: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:16: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:24: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:19: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:44: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:39: 
+----- test_laplacianTransform
+*** buffer overflow detected ***: terminated
+Aborted
+DEBUG tests/imgtools_tests.c:main:44: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:39: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:22: errno: None) src of 1s doesn't produce tgt of 0s
+DEBUG tests/imgtools_tests.c:main:51: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:46: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:51: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:46: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:29: errno: None) src of 1s doesn't produce tgt of 0s
+DEBUG tests/imgtools_tests.c:main:76: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:71: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:54: errno: None) laplacian failed on non-universal array
+DEBUG tests/imgtools_tests.c:main:76: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:71: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:54: errno: None) laplacian failed on non-universal array
+DEBUG tests/imgtools_tests.c:main:76: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:71: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:54: errno: None) laplacian failed on non-universal array
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:80: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:75: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:58: errno: None) laplacian failed on non-universal array
+DEBUG tests/imgtools_tests.c:main:82: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:77: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:84: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:79: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:84: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:79: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:95: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:90: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:95: ----- RUNNING: ./tests/imgtools_tests
+DEBUG tests/imgtools_tests.c:all_tests:90: 
+----- test_laplacianTransform
