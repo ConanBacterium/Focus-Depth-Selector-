@@ -819,3 +819,179 @@ DEBUG tests/imgtools_tests.c:all_tests:252:
 ----- test_var
 DEBUG tests/imgtools_tests.c:all_tests:253: 
 ----- test_padImg
+DEBUG tests/imgtools_tests.c:main:260: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:254: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:262: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:254: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:255: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:256: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:262: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:254: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:255: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:256: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:262: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:254: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:255: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:256: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:262: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:254: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:255: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:256: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:282: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:272: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:273: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:274: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:275: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:276: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:299: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:146: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:153: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:153: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:153: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:153: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+[ERROR] (test_trimImg:tests/imgtools_tests.c:153: errno: None) tgt not trimmed
+DEBUG tests/imgtools_tests.c:main:307: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:297: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_laplacianTransform

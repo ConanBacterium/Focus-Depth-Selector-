@@ -142,7 +142,9 @@ unsigned char *padImg(unsigned char *src, int srcWidth, int srcHeight, unsigned 
     int destHeight = srcHeight+2;
     int destWidth = srcWidth+2;
     int destSize = destHeight * destWidth;
-    unsigned char *dest = malloc(srcWidth*srcHeight + srcWidth*2 + srcHeight*2 + 4); 
+    //unsigned char *dest = malloc(srcWidth*srcHeight + srcWidth*2 + srcHeight*2 + 4); 
+    unsigned char *dest = malloc(destSize); 
+    check_mem(dest);
 
     for(int i = 0; i < destWidth; i++) dest[i] = C; 
     for(int h = 0; h < srcHeight; h++) {
@@ -153,4 +155,32 @@ unsigned char *padImg(unsigned char *src, int srcWidth, int srcHeight, unsigned 
     for(int i = 0; i < destWidth; i++) dest[destSize-destWidth+i] = C; 
 
     return dest;
+
+error: 
+    return NULL;
+}
+
+unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight) {
+    // rm padding, so rm first and last column/row
+    int destHeight = srcHeight-2;
+    int destWidth = srcWidth-2;
+    int destSize = destHeight * destWidth;
+    unsigned char *dest = malloc(destSize); 
+    check_mem(dest); 
+
+    int tgtIdx = 0;
+    for(int h = 0; h < destHeight; h++) {
+        for(int i = 0; i < destWidth; i++) {
+           dest[tgtIdx] = src[(h+1)*srcWidth+i+1]; // (h+1) to skip first line, and i+1 to skip first row element
+           tgtIdx++;
+        }
+    }
+
+
+
+    return dest;
+
+error: 
+    return NULL; 
+
 }

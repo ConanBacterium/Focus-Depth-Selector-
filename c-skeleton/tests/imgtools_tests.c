@@ -70,6 +70,90 @@ error:
     return "error not caused by mu_assert";
 }
 
+char *test_padImg() {
+    int srcVals[] = {
+        1,1,1,1,1,
+        1,2,1,1,1,
+        1,1,3,1,1,
+        1,1,1,4,1,
+        1,1,1,1,5
+    };
+    int tgtVals[] = {
+        0,0,0,0,0,0,0,
+        0,1,1,1,1,1,0,
+        0,1,2,1,1,1,0,
+        0,1,1,3,1,1,0,
+        0,1,1,1,4,1,0,
+        0,1,1,1,1,5,0,
+        0,0,0,0,0,0,0
+    };
+
+    unsigned char *src = malloc(25);
+    check_mem(src);
+
+    for(int i = 0; i < 25; i++) {
+        src[i] = (unsigned char) srcVals[i];
+    }
+
+    unsigned char *tgt = padImg(src, 5, 5, 0);
+
+    /*
+    printf("\n\n");
+    for(int i = 0; i < 49; i++) {
+        printf("%d,", tgt[i]);
+        if(i%7==6) printf("\n");
+    }
+    */
+
+    for(int i = 0; i < 49; i++) {
+        mu_assert(tgt[i] == (unsigned char) tgtVals[i], "padImg failed to produce expected target!");
+    }
+
+    free(src);
+    free(tgt);
+    return NULL;
+
+error: 
+    return "non mu_assert error"; 
+}
+
+char *test_trimImg() {
+    int srcVals[] = {
+        0,0,0,0,0,0,0,
+        0,1,1,1,1,1,0,
+        0,1,2,1,1,1,0,
+        0,1,1,3,1,1,0,
+        0,1,1,1,4,1,0,
+        0,1,1,1,1,5,0,
+        0,0,0,0,0,0,0
+    };
+    int tgtVals[] = {
+        1,1,1,1,1,
+        1,2,1,1,1,
+        1,1,3,1,1,
+        1,1,1,4,1,
+        1,1,1,1,5
+    };
+    unsigned char *src = malloc(49); 
+    check_mem(src); 
+
+    for(int i = 0; i < 49; i++) {
+        src[i] = (unsigned char) srcVals[i];
+    }
+
+    unsigned char *tgt = trimImg(src, 7, 7);
+    
+    for(int i = 0; i < 25; i++) {
+        mu_assert(tgt[i] == (unsigned char) tgtVals[i], "tgt not trimmed");
+    }
+
+    free(src); 
+    free(tgt);
+    return NULL; 
+error: 
+    return "non mu_assert error";
+}
+
 char *test_laplacianTransform(){
     // src img too small 
     unsigned char *src = malloc(16);
@@ -85,7 +169,7 @@ char *test_laplacianTransform(){
     src = malloc(25);
     tgt = malloc(25);
     memset(src, 1, 25);
-    memset(tgt, 9, 25); // differs from expected
+    memset(tgt, 9, 25); 
     int expectedVals[] = {9,9,9,9,9,
                         9,0,0,0,9,
                         9,0,0,0,9,
@@ -161,49 +245,6 @@ error:
     return "Test failed, memory error";
 }
 
-char *test_padImg() {
-    int srcVals[] = {
-        1,1,1,1,1,
-        1,2,1,1,1,
-        1,1,3,1,1,
-        1,1,1,4,1,
-        1,1,1,1,5
-    };
-    int tgtVals[] = {
-        0,0,0,0,0,0,0,
-        0,1,1,1,1,1,0,
-        0,1,2,1,1,1,0,
-        0,1,1,3,1,1,0,
-        0,1,1,1,4,1,0,
-        0,1,1,1,1,5,0,
-        0,0,0,0,0,0,0
-    };
-
-    unsigned char *src = malloc(25);
-    check_mem(src);
-
-    for(int i = 0; i < 25; i++) {
-        src[i] = (unsigned char) srcVals[i];
-    }
-
-    unsigned char *tgt = padImg(src, 5, 5, 0);
-
-    printf("\n\n");
-    for(int i = 0; i < 49; i++) {
-        printf("%d,", tgt[i]);
-        if(i%7==6) printf("\n");
-    }
-
-    for(int i = 0; i < 49; i++) {
-        mu_assert(tgt[i] == (unsigned char) tgtVals[i], "padImg failed to produce expected target!");
-    }
-
-    return NULL;
-
-error: 
-    return 1; 
-}
-
 char *test_calcVol() {
     /*
     ../34/tape1/0/0.bmp has vol 800.022539
@@ -246,11 +287,12 @@ char *test_calcVol() {
 char *all_tests() {
     mu_suite_start();
 
-    mu_run_test(test_laplacianTransform);
     mu_run_test(test_loadBnp_destroyImage);
     mu_run_test(test_switchLineOrder);
     mu_run_test(test_var);
     mu_run_test(test_padImg);
+    mu_run_test(test_trimImg);
+    mu_run_test(test_laplacianTransform);
     // mu_run_test(test_calcVol);
 
     return NULL;
