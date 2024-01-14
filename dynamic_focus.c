@@ -5,6 +5,11 @@
 #include <stdio.h>
 #include <time.h>
 
+// hoping this will use zero padding instead of border reflect
+#include <opencv2/core/types_c.h>
+#define IPL_BORDER_CONSTANT   244
+
+
 #define N_IMGS 301
 #define N_FOCUSDEPTHS 24
 #define CROP_WIDTH 2560
@@ -137,7 +142,7 @@ int main(int argc, char** argv) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < nImgs; imgidx++) {
-            snprintf(filename, sizeof(filename), "../34/tape2/%d/%d.bmp", bandidx+8, imgidx);
+            snprintf(filename, sizeof(filename), "../34/tape1/%d/%d.bmp", bandidx, imgidx);
             img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
             if (!img) {
                 printf("Could not open or find the image.\n");
@@ -156,9 +161,15 @@ int main(int argc, char** argv) {
                 cvCopy(img, cropped, NULL); 
 
                 double vol = calcVarianceOfLaplacian(cropped);
+                if(imgidx==0 && cropidx==0) {
+                    printf("%s has vol %f\n", filename, calcVarianceOfLaplacian(img));
+                }
+                if(imgidx==0) {
+                    printf("%s crop %d has vol %f\n", filename, cropidx, vol);
+                }
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
-                    printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
+                    // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
                     saveCropToStaticArray(cropped, bandidx, snippetidx);
                     maxVolSnippetVols[bandidx][snippetidx] = vol;
                 }

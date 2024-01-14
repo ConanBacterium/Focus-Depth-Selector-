@@ -332,3 +332,490 @@ DEBUG tests/imgtools_tests.c:all_tests:148:
 ----- test_loadBnp_destroyImage
 DEBUG tests/imgtools_tests.c:all_tests:149: 
 ----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:155: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:149: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:150: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:155: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:149: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:150: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:155: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:148: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:149: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:150: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:main:195: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:186: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:187: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:188: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:189: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:190: 
+----- test_calcVol
+DEBUG tests/imgtools_tests.c:main:208: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:199: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:200: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:201: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:202: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:156: errno: None) var didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:209: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:200: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:201: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:202: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:203: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:157: errno: None) var() didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:209: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:200: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:201: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:202: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:203: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:157: errno: None) var() didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:209: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:200: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:201: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:202: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:203: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:204: 
+----- test_calcVol
+DEBUG tests/imgtools_tests.c:main:212: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:203: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:204: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:205: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_calcVol
+[ERROR] (loadBnp:src/imgtools.c:53: errno: No such file or directory) error opening file
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:212: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:203: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:204: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:205: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_calcVol
+DEBUG tests/imgtools_tests.c:main:214: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:205: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:197: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:210: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:198: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:210: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:198: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:210: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:198: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:210: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:198: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:210: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:198: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:215: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:206: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:207: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:208: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:209: 
+----- test_var
+DEBUG tests/imgtools_tests.c:main:252: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:243: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:244: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:245: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:246: 
+----- test_var
+DEBUG tests/imgtools_tests.c:main:252: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:243: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:244: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:245: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:246: 
+----- test_var
+DEBUG tests/imgtools_tests.c:main:253: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:243: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:244: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:245: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:246: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:247: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:192: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:254: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:244: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:245: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:246: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:247: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:248: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:193: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:198: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:259: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:249: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:250: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:251: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:252: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:253: 
+----- test_padImg

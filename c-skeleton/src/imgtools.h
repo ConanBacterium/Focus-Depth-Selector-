@@ -46,3 +46,7 @@ int switchLineOrder(IMAGE *img);
 int laplacianTransform(unsigned char *src, unsigned char *target, int width, int height);
 
 double var(unsigned char *X, int length);
+
+double calcVol(unsigned char *src, int width, int height);
+
+unsigned char *padImg(unsigned char *src, int srcWidth, int srcHeight, unsigned char C);

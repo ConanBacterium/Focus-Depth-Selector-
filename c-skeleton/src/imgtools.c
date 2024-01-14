@@ -9,6 +9,7 @@ int clamp(int value, int min, int max) {
 }
 // heavily chatgpt assisted 
 int laplacianTransform(unsigned char *src, unsigned char *target, int width, int height) {
+    // zero padding
     if(width < 5 || height < 5) return 1;
     printf("width, height ok lapTransf\n");
     int kernel[3][3] = {
@@ -46,6 +47,7 @@ int destroyImage(IMAGE *img) {
 }
 
 int loadBnp(IMAGE *img, char *path) {
+    // takes uninitialized img pointer, so can be just a malloced pointer without any data set. 
     // TODO: CHECK NULL TERMINATED PATH
     img->isBottomUp = 1;
     FILE *imgf = fopen(path, "rb");
@@ -91,4 +93,64 @@ int switchLineOrder(IMAGE *img) {
     return 0;
 error: 
     return -1;
+}
+
+double var(unsigned char *X, int length) {
+    //welfords online algorithm
+    double mean = 0.0;
+    double M2 = 0.0;
+    double delta;
+
+    for (int i = 0; i < length; i++) {
+        double x = (double)X[i];
+        delta = x - mean;
+        mean += delta / (i + 1);
+        M2 += delta * (x - mean);
+    }
+
+    return M2 / length;
+    /*
+    long long sum = 0; long long sumOfSquares = 0; 
+    for(int i = 0; i < length; i++) {
+        long val = (long)X[i];
+        sum += val;
+        sumOfSquares += val * val; 
+    }
+    double mean = (double)sum / length; 
+    return ((double)sumOfSquares / length) - (mean * mean);
+    */
+}
+
+double calcVol(unsigned char *src, int width, int height){
+    // variance of laplacian
+
+    unsigned char *tgt = malloc(width*height); 
+    check_mem(tgt);
+
+    int rc = laplacianTransform(src, tgt, width, height); 
+    check(rc==0, "return code of laplacian not zero");
+
+    double vol = var(tgt, width*height); 
+
+    return vol;
+
+error: 
+    return -1;
+}
+
+unsigned char *padImg(unsigned char *src, int srcWidth, int srcHeight, unsigned char C) {
+    int destHeight = srcHeight+2;
+    int destWidth = srcWidth+2;
+    int destSize = destHeight * destWidth;
+    unsigned char *dest = malloc(srcWidth*srcHeight + srcWidth*2 + srcHeight*2 + 4); 
+
+    for(int i = 0; i < destWidth; i++) dest[i] = C; 
+    for(int h = 0; h < srcHeight; h++) {
+        dest[(h+1)*destWidth] = C; // put C in start of row
+        for(int i = 1; i < destWidth-1; i++) dest[(h+1)*destWidth + i] = src[h*srcWidth+i-1];
+        dest[(h+1)*destWidth+destWidth-1] = C; // put C in end of row
+    }
+    for(int i = 0; i < destWidth; i++) dest[destSize-destWidth+i] = C; 
+
+    return dest;
 }
