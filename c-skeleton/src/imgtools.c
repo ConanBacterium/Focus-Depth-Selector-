@@ -8,11 +8,13 @@ int clamp(int value, int min, int max) {
     return value;
 }
 // heavily chatgpt assisted 
-int laplacianTransform(unsigned char *src, unsigned char *target, int width, int height) {
-    // zero padding
+int laplacianTransform(unsigned char *src, int *target, int width, int height) {
+    // use short instead of int?  TODO
     if(width < 5 || height < 5) return 1;
+    
     printf("width, height ok lapTransf\n");
-    int kernel[3][3] = {
+
+    int kernel[3][3] = { 
         { 0,  1,  0},
         { 1, -4,  1},
         { 0,  1,  0}
@@ -95,7 +97,7 @@ error:
     return -1;
 }
 
-double var(unsigned char *X, int length) {
+double var(int *X, int length) {
     //welfords online algorithm
     double mean = 0.0;
     double M2 = 0.0;
@@ -124,7 +126,7 @@ double var(unsigned char *X, int length) {
 double calcVol(unsigned char *src, int width, int height){
     // variance of laplacian
 
-    unsigned char *tgt = malloc(width*height); 
+    int *tgt = malloc(width*height); 
     check_mem(tgt);
 
     int rc = laplacianTransform(src, tgt, width, height); 

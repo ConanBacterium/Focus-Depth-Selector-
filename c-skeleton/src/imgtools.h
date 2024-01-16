@@ -43,9 +43,9 @@ int destroyImage(IMAGE *img);
 int loadBnp(IMAGE *img, char *path);
 int switchLineOrder(IMAGE *img);
 
-int laplacianTransform(unsigned char *src, unsigned char *target, int width, int height);
+int laplacianTransform(unsigned char *src, int *target, int width, int height);
 
-double var(unsigned char *X, int length);
+double var(int *X, int length);
 
 double calcVol(unsigned char *src, int width, int height);
 

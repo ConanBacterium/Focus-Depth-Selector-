@@ -995,3 +995,256 @@ DEBUG tests/imgtools_tests.c:all_tests:300:
 ----- test_trimImg
 DEBUG tests/imgtools_tests.c:all_tests:301: 
 ----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:312: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:312: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:312: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:314: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_calcVol
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:314: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_calcVol
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:316: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_calcVol
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:321: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_calcVol
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:321: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_calcVol
+[ERROR] (test_calcVol:tests/imgtools_tests.c:300: errno: None) calcVol doesn't produce correct vol of tape1 img 0
+DEBUG tests/imgtools_tests.c:main:299: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:219: errno: None) var() didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:219: errno: None) var() didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+[ERROR] (test_var:tests/imgtools_tests.c:219: errno: None) var() didn't produce expected variance
+DEBUG tests/imgtools_tests.c:main:303: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:main:309: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:298: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:299: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:300: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:main:312: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:301: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:main:313: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:302: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:303: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:304: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:305: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:306: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:190: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:318: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_laplacianTransform
+malloc(): corrupted top size
+Aborted
+DEBUG tests/imgtools_tests.c:main:320: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_laplacianTransform
+malloc(): corrupted top size
+Aborted
+DEBUG tests/imgtools_tests.c:main:322: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_laplacianTransform
+malloc(): corrupted top size
+Aborted
