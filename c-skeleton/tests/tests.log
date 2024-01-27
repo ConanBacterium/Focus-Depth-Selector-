@@ -1248,3 +1248,91 @@ DEBUG tests/imgtools_tests.c:all_tests:316:
 ----- test_laplacianTransform
 malloc(): corrupted top size
 Aborted
+DEBUG tests/imgtools_tests.c:main:324: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_laplacianTransform
+malloc(): corrupted top size
+Aborted
+DEBUG tests/imgtools_tests.c:main:324: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:324: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:324: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:313: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:314: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_trimImg
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:304: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_padImg
+[ERROR] (test_padImg:tests/imgtools_tests.c:109: errno: None) padImg failed to produce expected target!
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted

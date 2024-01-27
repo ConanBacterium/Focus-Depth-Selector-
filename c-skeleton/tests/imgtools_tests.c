@@ -155,16 +155,6 @@ error:
 }
 
 char *test_laplacianTransform(){
-    // src img too small 
-    /*
-    unsigned char *src = malloc(400);
-    int *tgt = malloc(400);
-    int *expected = malloc(400); 
-    check_mem(src);
-    check_mem(tgt);
-    check_mem(expected);
-    */
-
     int *paddedTgt = malloc(22*22); // take account of padding
     check_mem(paddedTgt);
     unsigned char *src = malloc(400); 
@@ -186,13 +176,11 @@ char *test_laplacianTransform(){
     
     int *expected = expectedVals;
 
-    int rc = laplacianTransform(paddedSrc, paddedTgt, 20, 20); 
+    int rc = laplacianTransform(paddedSrc, paddedTgt, 22, 22); 
 
     printf("\n\nlapl transf completed\n\n");
 
-    unsigned char *tgt = trimImg(paddedTgt, 22, 22);
-
-    // trimming fails?? very odd. so trimImg is broken or what? TODO CLIFFHANGER
+    int *tgt = trimImg(paddedTgt, 22, 22);
 
     printf("\n\n trimming completed \n\n");
 
@@ -201,26 +189,8 @@ char *test_laplacianTransform(){
     mu_assert(rc==0, "performing laplacianTransform on src doesn't produce expected values");
     free(tgt);
 
-    /*
-    for (int i = 0; i < 400; i++) {
-       expected[i] = expectedVals[i];  // can't I just do memcpy lol. Or create a pointer to the static allocated array  
-    }
-    rc = laplacianTransform(src, tgt, 5, 5);
-    mu_assert(rc==0, "laplacianTransform failed");
-    rc = memcmp(tgt, expected, 25);
-    mu_assert(rc==0, "src of 1s doesn't produce tgt of 0s");
-    free(src);
-    free(tgt);
-    free(expected);
-    */
     return NULL; 
-/*
-error: 
-    free(src);
-    free(tgt);
-    free(expected);
-    return "smth went wronk that wasn't mu_assert";
-*/
+
 error: 
     return "failed memory or smth";
 }

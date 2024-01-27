@@ -168,6 +168,7 @@ unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight) {
     int destWidth = srcWidth-2;
     int destSize = destHeight * destWidth;
     unsigned char *dest = malloc(destSize); 
+    printf("\n\n171 malloc\n\n");
     check_mem(dest); 
 
     int tgtIdx = 0;
