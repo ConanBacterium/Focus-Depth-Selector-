@@ -33,7 +33,9 @@ int laplacianTransform(unsigned char *src, int *target, int width, int height) {
 
             // Assign the computed value to the target pixel
             // Clamp to sure to handle potential underflow or overflow
-            int newValue = clamp(sum, 0, 255);
+            // ACTUALLY DONT DO THIS !!! we need the negatives
+            // int newValue = clamp(sum, 0, 255);
+            int newValue = sum;
             target[y * width + x] = newValue;
         }
     }
@@ -168,7 +170,6 @@ unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight) {
     int destWidth = srcWidth-2;
     int destSize = destHeight * destWidth;
     unsigned char *dest = malloc(destSize); 
-    printf("\n\n171 malloc\n\n");
     check_mem(dest); 
 
     int tgtIdx = 0;
@@ -179,11 +180,34 @@ unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight) {
         }
     }
 
+    return dest;
 
+error: 
+    return NULL; 
+}
+
+int *trimImgInt(int *src, int srcWidth, int srcHeight) {
+    // rm padding, so rm first and last column/row
+    int destHeight = srcHeight-2;
+    int destWidth = srcWidth-2;
+    int destSize = destHeight * destWidth * sizeof(int);
+    printf("\n\n destSize: %d\n", destSize);
+    int *dest = malloc(destSize); 
+    printf("\n\n171 malloc\n");
+    check_mem(dest); 
+
+    int tgtIdx = 0;
+    for(int h = 0; h < destHeight; h++) {
+        for(int i = 0; i < destWidth; i++) {
+            int srcIdx =  (h+1)*srcWidth+i+1; // (h+1) to skip first line, and i+1 to skip first row element
+            // printf("\n\n tgt idx %d - src idx %d \n\n", tgtIdx, srcIdx);
+            dest[tgtIdx] = src[srcIdx];  
+            tgtIdx++;
+        }
+    }
 
     return dest;
 
 error: 
     return NULL; 
-
 }

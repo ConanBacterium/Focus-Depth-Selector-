@@ -1336,3 +1336,466 @@ DEBUG tests/imgtools_tests.c:all_tests:288:
 ----- test_laplacianTransform
 imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
 Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+imgtools_tests: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+Aborted
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:189: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:294: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:283: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:284: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:285: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:286: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:287: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:288: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:189: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_laplacianTransform
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_laplacianTransform
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:300: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:289: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_laplacianTransform
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:301: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:290: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_laplacianTransform
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:302: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_laplacianTransform
+Segmentation fault
+DEBUG tests/imgtools_tests.c:main:302: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:197: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:302: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:291: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:292: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:293: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:294: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:295: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:296: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:197: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:318: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:213: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:318: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:307: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:308: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:309: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:310: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:311: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:312: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:213: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:326: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:221: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:326: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:221: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:326: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:315: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:221: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:327: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:222: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/imgtools_tests.c:main:327: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:316: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:317: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:318: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_laplacianTransform

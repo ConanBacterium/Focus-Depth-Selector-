@@ -52,3 +52,4 @@ double calcVol(unsigned char *src, int width, int height);
 unsigned char *padImg(unsigned char *src, int srcWidth, int srcHeight, unsigned char C);
 
 unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight);
+int *trimImgInt(int *src, int srcWidth, int srcHeight);
