@@ -132,10 +132,14 @@ double calcVol(unsigned char *src, int width, int height){
     check_mem(tgt);
 
     int rc = laplacianTransform(src, tgt, width, height); 
-    check(rc==0, "return code of laplacian not zero");
+    if(rc != 0) {
+        free(tgt); 
+        check(rc==0, "return code of laplacian not zero");
+    }
 
     double vol = var(tgt, width*height); 
 
+    free(tgt);
     return vol;
 
 error: 

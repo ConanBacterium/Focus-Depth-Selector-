@@ -245,7 +245,7 @@ char *test_var() {
     int *X = vals;
 
     double res = var(X, 20);
-//    printf("true: %f, calculated: %f\n", expectedVar, res);
+    //    printf("true: %f, calculated: %f\n", expectedVar, res);
     mu_assert(res == expectedVar, "var() didn't produce expected variance");
 
     return NULL;
@@ -322,7 +322,6 @@ char *all_tests() {
     mu_run_test(test_padImg);
     mu_run_test(test_trimImg);
     mu_run_test(test_laplacianTransform);
-    // mu_run_test(test_calcVol);
 
     return NULL;
 }

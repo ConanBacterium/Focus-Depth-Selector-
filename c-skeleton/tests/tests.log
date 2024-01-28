@@ -1799,3 +1799,17 @@ DEBUG tests/imgtools_tests.c:all_tests:320:
 ----- test_trimImg
 DEBUG tests/imgtools_tests.c:all_tests:321: 
 ----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:330: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
