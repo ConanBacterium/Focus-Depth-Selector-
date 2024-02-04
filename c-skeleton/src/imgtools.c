@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "imgtools.h"
+#include <limits.h>
 #include "dbg.h"
 
 int clamp(int value, int min, int max) {
@@ -12,7 +13,7 @@ int laplacianTransform(unsigned char *src, int *target, int width, int height) {
     // use short instead of int?  TODO
     if(width < 5 || height < 5) return 1;
     
-    printf("width, height ok lapTransf\n");
+    // printf("width, height ok lapTransf\n");
 
     int kernel[3][3] = { 
         { 0,  1,  0},
@@ -36,11 +37,19 @@ int laplacianTransform(unsigned char *src, int *target, int width, int height) {
             // ACTUALLY DONT DO THIS !!! we need the negatives
             // int newValue = clamp(sum, 0, 255);
             int newValue = sum;
+
+            check(y * width + x <= width*height, "should never happen");
+            // printf("\n\nidx %d, newValue %d\n\n", y * width + x, newValue);
+            // SEGFAULT AT SECOND CALL OF THIS FUNC IDX "idx 84420, newValue -519"
+            // with valgrind it is always at "idx 202238, newValue 17"
             target[y * width + x] = newValue;
         }
     }
 
     return 0; // or return a meaningful result or status code
+
+error: 
+    return -1;
 }
 
 int destroyImage(IMAGE *img) {
@@ -73,8 +82,14 @@ int loadBnp(IMAGE *img, char *path) {
     nBytesRead = fread(img->imageData, 1, width*height, imgf);
     check(nBytesRead == width*height, "fread didn't read enough bytes, maybe none"); 
 
+    int rc = fclose(imgf);
+    if(rc != 0) {
+        return -1;
+    }
+
     return 0;
 error: 
+    fclose(imgf); 
     return 1; 
 }
 
@@ -113,28 +128,20 @@ double var(int *X, int length) {
     }
 
     return M2 / length;
-    /*
-    long long sum = 0; long long sumOfSquares = 0; 
-    for(int i = 0; i < length; i++) {
-        long val = (long)X[i];
-        sum += val;
-        sumOfSquares += val * val; 
-    }
-    double mean = (double)sum / length; 
-    return ((double)sumOfSquares / length) - (mean * mean);
-    */
 }
 
 double calcVol(unsigned char *src, int width, int height){
+    // printf("\n\n CALC VOL !!!! width*height=%d\n\n", width*height);
     // variance of laplacian
 
-    int *tgt = malloc(width*height); 
+    int *tgt = malloc(width * height * sizeof(int));  
     check_mem(tgt);
 
     int rc = laplacianTransform(src, tgt, width, height); 
     if(rc != 0) {
         free(tgt); 
-        check(rc==0, "return code of laplacian not zero");
+        printf("\n\nreturn code of laplacian not zero!\n");
+        goto error;
     }
 
     double vol = var(tgt, width*height); 

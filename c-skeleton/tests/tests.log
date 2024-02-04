@@ -1813,3 +1813,362 @@ DEBUG tests/imgtools_tests.c:all_tests:323:
 ----- test_trimImg
 DEBUG tests/imgtools_tests.c:all_tests:324: 
 ----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:19: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:14: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:20: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:15: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:20: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:15: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:20: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:15: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:58: errno: No such file or directory) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (laplacianTransform:src/imgtools.c:47: errno: None) should never happen
+[ERROR] (calcVol:src/imgtools.c:149: errno: None) return code of laplacian not zero
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:53: errno: None) calcVol returned error (-1)!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (laplacianTransform:src/imgtools.c:47: errno: None) should never happen
+[ERROR] (calcVol:src/imgtools.c:149: errno: None) return code of laplacian not zero
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:53: errno: None) calcVol returned error (-1)!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (loadBnp:src/imgtools.c:67: errno: Too many open files) error opening file
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:37: errno: None) failed to load img
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:76: errno: None) write to file failed!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:76: errno: None) write to file failed!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:76: errno: None) write to file failed!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:76: errno: None) write to file failed!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+[ERROR] (genDynFocFromTapeDir:src/dynamic_focus.c:76: errno: None) write to file failed!
+[ERROR] (testGenDynFocFromTapeDir:tests/dynamic_focus_tests.c:8: errno: None) genDynFocFroMTapeDir failed!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+free(): double free detected in tcache 2
+Aborted
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+free(): double free detected in tcache 2
+Aborted
