@@ -2172,3 +2172,65 @@ DEBUG tests/dynamic_focus_tests.c:all_tests:16:
 ----- testGenDynFocFromTapeDir
 free(): double free detected in tcache 2
 Aborted
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/imgtools_tests.c:main:329: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:319: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:320: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:321: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:322: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:323: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:324: 
+----- test_laplacianTransform

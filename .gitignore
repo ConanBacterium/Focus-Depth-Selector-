@@ -7,6 +7,8 @@ playground/*
 dbg.h
 *.png
 *.bmp
+*.bytes
+*.pgm
 
 
 # Object files
@@ -58,3 +60,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+outputs_for_comparison/maxVolSnippetImageDatas_34tape1FromScratch.bytes

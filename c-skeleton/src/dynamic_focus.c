@@ -51,7 +51,6 @@ int genDynFocFromTapeDir()
 
                 double vol = calcVol(paddedCrop, CROP_WIDTH, CROP_HEIGHT);
                 check(vol != -1, "calcVol returned error (-1)!");
-                check(vol != NULL, "very strange!!!");
                 
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // printf("\n\nsnippet has higher vol, copy to maxVolSnippetImageDatas\n\n");
@@ -61,30 +60,30 @@ int genDynFocFromTapeDir()
                     // printf("\n\ncopied snippet to maxVolSnippetImageDatas\n\n");
                     maxVolSnippetVols[bandidx][snippetidx] = vol;
                 }
-                // cropinfos[cropcounter].imgidx = imgidx;
-                // cropinfos[cropcounter].cropidx = cropidx;
-                // cropinfos[cropcounter].snippetidx = snippetidx;
-                // cropinfos[cropcounter].vol = vol; 
 
                 y += SHIFT;
             }
+            free(paddedCrop);
+            paddedCrop = NULL; 
         }
+        free(img->imageData); // need to free the imageData after every imgidx iteration, because otherwise new imageData will be allocated in loadBnp function and memory ( A LOT) will leak. 
+        img->imageData = NULL; 
     }
 
-    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/maxVolSnippetImageDatas_34tape1.bytes", "w");
+    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1FromScratch.bytes", "w");
     printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
     int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
     check(itemsWritten == 1, "write to file failed!");
     int rc = fclose(outfile); 
     check(rc==0, "failed clsoing file"); 
     
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/maxVolSnippetVols_34tape1.bytes", "w");
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/maxVolSnippetVols_34tape1FromScratch.bytes", "w");
     printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
-    itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile); 
+    itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
     check(itemsWritten == 1, "write to file failed!"); 
     rc = fclose(outfile); 
     check(rc==0, "failed closing file"); 
-    free(outfile); 
+    // free(outfile); 
 
     destroyImage(img);
     img = NULL; 

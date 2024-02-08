@@ -4,10 +4,11 @@
 #include <opencv2/imgproc/imgproc_c.h>
 #include <stdio.h>
 #include <time.h>
+#include "dbg.h"
 
-// hoping this will use zero padding instead of border reflect
-#include <opencv2/core/types_c.h>
-#define IPL_BORDER_CONSTANT   244
+// hoping this will use zero padding instead of border reflect. It doesn't produce a change in 34 tape1 0 0 
+// #include <opencv2/core/types_c.h>
+// #define IPL_BORDER_CONSTANT   244
 
 
 #define N_IMGS 301
@@ -149,6 +150,14 @@ int main(int argc, char** argv) {
                 return -1;
             }
 
+            ///// these two prints are to get VOLs to have something to test against in own from scratch library
+            // if(imgidx==0 && cropidx==0) {
+            //     printf("%s has vol %f\n", filename, calcVarianceOfLaplacian(img));
+            // }
+            // if(imgidx==0) {
+            //     printf("%s crop %d has vol %f\n", filename, cropidx, vol);
+            // }
+
             int x = 0; int y = 0; 
             int cropsize_x = img->width;
             int cropsize_y = shift;
@@ -161,12 +170,7 @@ int main(int argc, char** argv) {
                 cvCopy(img, cropped, NULL); 
 
                 double vol = calcVarianceOfLaplacian(cropped);
-                if(imgidx==0 && cropidx==0) {
-                    printf("%s has vol %f\n", filename, calcVarianceOfLaplacian(img));
-                }
-                if(imgidx==0) {
-                    printf("%s crop %d has vol %f\n", filename, cropidx, vol);
-                }
+                
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
                     // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
@@ -188,11 +192,38 @@ int main(int argc, char** argv) {
         }
     }
 
+    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1OpenCV.bytes", "w");
+    printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
+    int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
+    check(itemsWritten == 1, "write to file failed!");
+    int rc = fclose(outfile); 
+    check(rc==0, "failed clsoing file"); 
+    
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1OpenCV.bytes", "w");
+    printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
+    itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
+    check(itemsWritten == 1, "write to file failed!"); 
+    rc = fclose(outfile); 
+    check(rc==0, "failed closing file"); 
+
     IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), img->depth, img->nChannels);
+    cvShowImage("Display window", dynamicfocusimg);
+    cvWaitKey(0);
     stitchMaxVolSnippetImageDatas(dynamicfocusimg); 
     cvShowImage("Display window", dynamicfocusimg);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
+    cvWaitKey(0);
 
-    const char* outfileName = "output.png"; // Can be .png, .bmp, etc., depending on the desired format
+    const char* outfileName = "output_24tape1.pgm"; // Can be .png, .bmp, etc., depending on the desired format
     if (!cvSaveImage(outfileName, dynamicfocusimg, NULL)) {
         printf("Could not save the image.\n");
     }
@@ -209,4 +240,13 @@ endAndClean:
     cvDestroyWindow("Display window");
 
     return 0;
+
+error: 
+    cvReleaseImage(&img);
+    cvReleaseImage(&cropped); 
+
+    // Destroy the window
+    cvDestroyWindow("Display window");
+
+    return -1; 
 }

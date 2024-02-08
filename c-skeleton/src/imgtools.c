@@ -54,7 +54,9 @@ error:
 
 int destroyImage(IMAGE *img) {
     free(img->imageData);
+    img->imageData = NULL; 
     free(img); 
+    img = NULL; 
 
     return 0; 
 }
@@ -202,9 +204,7 @@ int *trimImgInt(int *src, int srcWidth, int srcHeight) {
     int destHeight = srcHeight-2;
     int destWidth = srcWidth-2;
     int destSize = destHeight * destWidth * sizeof(int);
-    printf("\n\n destSize: %d\n", destSize);
     int *dest = malloc(destSize); 
-    printf("\n\n171 malloc\n");
     check_mem(dest); 
 
     int tgtIdx = 0;

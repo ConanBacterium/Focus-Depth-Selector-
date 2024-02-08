@@ -1,0 +1,131 @@
+(base) jaro@PRO-PF1SB561:/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/c-skeleton$ valgrind --leak-check=full tests/dynamic_focus_tests
+==14595== Memcheck, a memory error detector
+==14595== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14595== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==14595== Command: tests/dynamic_focus_tests
+==14595==
+==14595== Warning: set address range perms: large range [0x10e000, 0x1fb50000) (defined)
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: tests/dynamic_focus_tests
+
+----
+RUNNING tests/dynamic_focus_tests
+DEBUG tests/dynamic_focus_tests.c:all_tests:16:
+----- testGenDynFocFromTapeDir
+
+
+testGenDynFocFromTapeDir
+
+==14595== Conditional jump or move depends on uninitialised value(s)
+==14595==    at 0x109696: genDynFocFromTapeDir (dynamic_focus.c:53)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== Conditional jump or move depends on uninitialised value(s)
+==14595==    at 0x1096AB: genDynFocFromTapeDir (dynamic_focus.c:55)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+
+
+Expected size of maxVolSnippetImageDatas_34tape1.bytes is 530841600
+
+
+
+Expected size of maxVolSnippetVols_34tape1.bytes is 10368
+
+==14595== Syscall param write(buf) points to uninitialised byte(s)
+==14595==    at 0x204CC887: write (write.c:26)
+==14595==    by 0x20442EEC: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1180)
+==14595==    by 0x204437CF: new_do_write (fileops.c:448)
+==14595==    by 0x204437CF: _IO_new_file_xsputn (fileops.c:1254)
+==14595==    by 0x204437CF: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==14595==    by 0x20437FD6: fwrite (iofwrite.c:39)
+==14595==    by 0x109A15: genDynFocFromTapeDir (dynamic_focus.c:82)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==  Address 0x10d040 is 0 bytes inside data symbol "maxVolSnippetVols"
+==14595==
+==14595== Syscall param write(buf) points to uninitialised byte(s)
+==14595==    at 0x204CC887: write (write.c:26)
+==14595==    by 0x20442EEC: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1180)
+==14595==    by 0x204449E0: new_do_write (fileops.c:448)
+==14595==    by 0x204449E0: _IO_new_do_write (fileops.c:425)
+==14595==    by 0x204449E0: _IO_do_write@@GLIBC_2.2.5 (fileops.c:422)
+==14595==    by 0x20443FD7: _IO_file_close_it@@GLIBC_2.2.5 (fileops.c:135)
+==14595==    by 0x20436D8E: fclose@@GLIBC_2.2.5 (iofclose.c:53)
+==14595==    by 0x109A7E: genDynFocFromTapeDir (dynamic_focus.c:84)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==  Address 0x209d91e0 is 0 bytes inside a block of size 4,096 alloc'd
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x20436BA3: _IO_file_doallocate (filedoalloc.c:101)
+==14595==    by 0x20445CDF: _IO_doallocbuf (genops.c:347)
+==14595==    by 0x20444F5F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+==14595==    by 0x204436D4: _IO_new_file_xsputn (fileops.c:1243)
+==14595==    by 0x204436D4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==14595==    by 0x20437FD6: fwrite (iofwrite.c:39)
+==14595==    by 0x109A15: genDynFocFromTapeDir (dynamic_focus.c:82)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+ALL TESTS PASSED
+Tests run: 1
+==14595==
+==14595== HEAP SUMMARY:
+==14595==     in use at exit: 23,431,982,340 bytes in 57,785 blocks
+==14595==   total heap usage: 125,224 allocs, 67,439 frees, 71,337,771,862 bytes allocated
+==14595==
+==14595== 210,084 bytes in 1 blocks are definitely lost in loss record 1 of 5
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x109560: genDynFocFromTapeDir (dynamic_focus.c:28)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== 1,050,420 bytes in 5 blocks are possibly lost in loss record 2 of 5
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x10A30C: padImg (imgtools.c:163)
+==14595==    by 0x10966F: genDynFocFromTapeDir (dynamic_focus.c:49)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== 19,660,800 bytes in 4 blocks are possibly lost in loss record 3 of 5
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x109ED3: loadBnp (imgtools.c:79)
+==14595==    by 0x109604: genDynFocFromTapeDir (dynamic_focus.c:36)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== 11,634,241,836 bytes in 55,379 blocks are definitely lost in loss record 4 of 5
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x10A30C: padImg (imgtools.c:163)
+==14595==    by 0x10966F: genDynFocFromTapeDir (dynamic_focus.c:49)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== 11,776,819,200 bytes in 2,396 blocks are definitely lost in loss record 5 of 5
+==14595==    at 0x20398899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14595==    by 0x109ED3: loadBnp (imgtools.c:79)
+==14595==    by 0x109604: genDynFocFromTapeDir (dynamic_focus.c:36)
+==14595==    by 0x10941A: testGenDynFocFromTapeDir (dynamic_focus_tests.c:7)
+==14595==    by 0x1094D4: all_tests (dynamic_focus_tests.c:16)
+==14595==    by 0x1092B8: main (dynamic_focus_tests.c:21)
+==14595==
+==14595== LEAK SUMMARY:
+==14595==    definitely lost: 23,411,271,120 bytes in 57,776 blocks
+==14595==    indirectly lost: 0 bytes in 0 blocks
+==14595==      possibly lost: 20,711,220 bytes in 9 blocks
+==14595==    still reachable: 0 bytes in 0 blocks
+==14595==         suppressed: 0 bytes in 0 blocks
+==14595==
+==14595== Use --track-origins=yes to see where uninitialised values come from
+==14595== For lists of detected and suppressed errors, rerun with: -s
+==14595== ERROR SUMMARY: 115591 errors from 9 contexts (suppressed: 0 from 0)
