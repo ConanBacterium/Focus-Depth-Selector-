@@ -126,13 +126,13 @@ char *test_padImgReflective() {
         1,1,1,1,5
     };
     int tgtVals[] = {
-        0,1,1,1,1,1,0,
+        1,1,1,1,1,1,1,
         1,1,1,1,1,1,1,
         1,1,2,1,1,1,1,
         1,1,1,3,1,1,1,
         1,1,1,1,4,1,1,
         1,1,1,1,1,5,5,
-        0,1,1,1,1,5,0
+        1,1,1,1,1,5,5
     };
 
     unsigned char *src = malloc(25);
@@ -144,13 +144,13 @@ char *test_padImgReflective() {
 
     unsigned char *tgt = padImgReflective(src, 5, 5);
 
-    /*
+    
     printf("\n\n");
     for(int i = 0; i < 49; i++) {
         printf("%d,", tgt[i]);
         if(i%7==6) printf("\n");
     }
-    */
+    
 
     for(int i = 0; i < 49; i++) {
         mu_assert(tgt[i] == (unsigned char) tgtVals[i], "padImg failed to produce expected target!");

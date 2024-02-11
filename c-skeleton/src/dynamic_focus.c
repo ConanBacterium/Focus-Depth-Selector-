@@ -35,7 +35,7 @@ int genDynFocFromTapeDir()
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < N_IMGS; imgidx++) {
-            snprintf(filename, sizeof(filename), "/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/34/tape1/%d/%d.bmp", bandidx, imgidx);
+            snprintf(filename, sizeof(filename), "/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/34/tape2/%d/%d.bmp", bandidx+8, imgidx);
             int rc = loadBnp(img, filename);
             check(rc==0, "failed to load img"); 
             // printf("\n\n loaded bnp! \n\n");
@@ -83,21 +83,21 @@ int genDynFocFromTapeDir()
         img->imageData = NULL; 
     }
 
-    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1FromScratch.bytes", "w");
+    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape2FromScratch.bytes", "w");
     printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
     int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
     check(itemsWritten == 1, "write to file failed!");
     int rc = fclose(outfile); 
     check(rc==0, "failed clsoing file"); 
     
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/maxVolSnippetVols_34tape1FromScratch.bytes", "w");
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape2FromScratch.bytes", "w");
     printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
     itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
     check(itemsWritten == 1, "write to file failed!"); 
     rc = fclose(outfile); 
     check(rc==0, "failed closing file"); 
 
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1FromScratch.bytes", "w");
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape2FromScratch.bytes", "w");
     printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
     itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
     check(itemsWritten == 1, "write to file failed!"); 

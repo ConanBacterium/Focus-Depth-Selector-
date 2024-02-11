@@ -178,9 +178,6 @@ error:
 }
 
 unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight) {
-    /*
-        Not sure how to reflect the corners, but it doesn't matter with the laplacian since the corners of the kernel are 0 anyway
-    */
     // printf("\n\npadImgReflective\n\n");
     int destHeight = srcHeight+2;
     int destWidth = srcWidth+2;
@@ -190,8 +187,8 @@ unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight)
     unsigned char *dest = malloc(destSize); 
     check_mem(dest);
 
-    // reflect first row, putting 0 in corners 
-    dest[0] = 0; 
+    // reflect first row, 
+    dest[0] = *src; 
     // printf("\n\nTrying to memcpy first line, dest[1], src[0], srcWidth: %d\n\n", srcWidth);
     void *tmp  = memcpy(&dest[1], &src[0], srcWidth); 
 
@@ -204,7 +201,7 @@ unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight)
     }
 
     // printf("\n\nDidn't fail memcpy first line\n\n");
-    dest[destWidth-1] = 0; 
+    dest[destWidth-1] = *(src+srcWidth-1); 
     // printf("\n\n padded first row\n\n");
     
     // copy src adding reflected borders
@@ -223,9 +220,9 @@ unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight)
         dest[destWidth*(y + 1) - 1] = src[srcWidth*(y) - 1]; // dest[99] = src[89]
     }
 
-    // reflect last row, putting 0 in corners 
+    // reflect last row, 
     // printf("\n\n4: dest[%d] = 0\n\n", destWidth*(destHeight-1));
-    dest[destWidth*(destHeight-1)] = 0; // dest[90]
+    dest[destWidth*(destHeight-1)] = *(src+srcWidth*(srcHeight-1)); // dest[90]
     // printf("\n\n5: dest[%d] = src[%d]\n\n", destWidth*(destHeight-1)+1, srcWidth*(srcHeight-1));
     tmp = memcpy(&dest[destWidth*(destHeight-1)+1], &src[srcWidth*(srcHeight-1)], srcWidth); // dest[91] = src[81]...src[89]
     if( tmp != &dest[destWidth*(destHeight-1)+1]) {
@@ -234,7 +231,7 @@ unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight)
         return NULL;
     }
     // printf("\n\n6: dest[%d] = 0\n\n", destWidth*(destHeight)-1);
-    dest[destWidth*(destHeight)-1] = 0; // dest[99]
+    dest[destWidth*(destHeight)-1] = *(src+srcWidth*(srcHeight)-1); // dest[99]
 
     return dest;
 

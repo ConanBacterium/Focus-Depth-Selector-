@@ -61,23 +61,35 @@ void findMaxDiffSnippet()
     int maxDiff_i = 0; 
 
     double vo, vf, diff;
+    int ocSmallers = 0;
     for(int i = 0; i < VOLS_SIZE; i++) {
         vo = volsOpenCV[i];
         vf = volsFromScratch[i];
-        if(vo > vf) 
+        // check if OpenCV solution is actually std dev and not variance 
+        if(vo*vo == vf) {
+            printf("\n\nOpenCV*OpenCV = From Scratch\n\n");
+        }
+        if(vo > vf) {
             diff = vo-vf;
-        else 
+        }
+        else {
             diff = vf-vo;
+            ocSmallers++;
+        }
 
         if(diff > maxDiff) {
             maxDiff = diff; 
             maxDiff_i = i;
         }
-        printf("%d: %d | ", i, (int) diff);
+        // printf("%d: %d | ", i, (int) diff);
+        printf("%d: %d | ", i, (int) (vo-vf));
         if(i % 9 == 0) printf("\n");
     }
 
+    printf("\n\nvo %f vf %f\n\n", volsOpenCV[VOLS_SIZE-1], volsFromScratch[VOLS_SIZE-1]);
+
     printf("\n\nmaxdiff %d idx %d\n", maxDiff, maxDiff_i);
+    printf("\n\nocSmallers = %d\n\n", ocSmallers);
 }
 
 void compareMaxDiffSnippets() {

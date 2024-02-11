@@ -2792,3 +2792,95 @@ DEBUG tests/imgtools_tests.c:all_tests:371:
 ----- test_trimImg
 DEBUG tests/imgtools_tests.c:all_tests:372: 
 ----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/imgtools_tests.c:main:377: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:366: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:367: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:368: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:369: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:370: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:371: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:372: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:377: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:366: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:367: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:368: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:369: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:370: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:156: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:377: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:366: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:367: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:368: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:369: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:370: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:156: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:377: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:366: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:367: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:368: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:369: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:370: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:371: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:372: 
+----- test_laplacianTransform
+DEBUG tests/dynamic_focus_tests.c:main:21: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/dynamic_focus_tests.c:all_tests:16: 
+----- testGenDynFocFromTapeDir
+DEBUG tests/imgtools_tests.c:main:377: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:366: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:367: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:368: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:369: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:370: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:371: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:372: 
+----- test_laplacianTransform

@@ -152,8 +152,8 @@ int snippetImageDatasToPGM(char *srcPath, char *destPath)
 
 int main(int argc, char** argv) 
 {
-    FILE *OCSVolsF = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1OpenCV.bytes", "r");
-    FILE *FSVolsF = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1FromScratch.bytes", "r");
+    FILE *OCSVolsF = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape2OpenCV.bytes", "r");
+    FILE *FSVolsF = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape2FromScratch.bytes", "r");
     
     if(OCSVolsF == NULL || FSVolsF == NULL)  {
         printf("error opening files\n");
@@ -182,8 +182,8 @@ int main(int argc, char** argv)
     fclose(OCSVolsF); 
     fclose(FSVolsF);
 
-    int rc = snippetImageDatasToPGM("maxVolSnippetImageDatas_34tape1OpenCV.bytes", "34tape1OpenCV.pgm");
-    rc = snippetImageDatasToPGM("maxVolSnippetImageDatas_34tape1FromScratch.bytes", "34tape1FromScratch.pgm");
+    int rc = snippetImageDatasToPGM("maxVolSnippetImageDatas_34tape2OpenCV.bytes", "34tape2OpenCV.pgm");
+    rc = snippetImageDatasToPGM("maxVolSnippetImageDatas_34tape2FromScratch.bytes", "34tape2FromScratch.pgm");
     if(rc != 0)
         goto error; 
 

@@ -67,19 +67,38 @@ void printCropInfo(struct Crop* crop) {
     printf("imgidx: %d\ncropidx: %d\nsnippetidx: %d\nvol: %d\n", crop->imgidx, crop->cropidx, crop->snippetidx, crop->vol);
 }
 
+
+double var(short *X, int length) {
+    //welfords online algorithm
+    double mean = 0.0;
+    double M2 = 0.0;
+    double delta;
+
+    for (int i = 0; i < length; i++) {
+        double x = (double)X[i];
+        delta = x - mean;
+        mean += delta / (i + 1);
+        M2 += delta * (x - mean);
+    }
+
+    return M2 / length;
+}
+
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
     cvLaplace(img, laplacian, 3);
 
-    IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_64F, img->nChannels);
-    cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
+    // IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
+    // cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
 
-    CvScalar mean, stdDev;
-    cvAvgSdv(laplacian64f, &mean, &stdDev, NULL);
-    double variance = stdDev.val[0] * stdDev.val[0];
+    // CvScalar mean, stdDev;
+    // cvAvgSdv(laplacian, &mean, &stdDev, NULL);
+    // double variance = stdDev.val[0] * stdDev.val[0];
+
+    double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
 
     cvReleaseImage(&laplacian);
-    cvReleaseImage(&laplacian64f);
+    // cvReleaseImage(&laplacian64f);
 
     return variance;
 }
@@ -141,7 +160,7 @@ int main(int argc, char** argv) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < nImgs; imgidx++) {
-            snprintf(filename, sizeof(filename), "../34/tape1/%d/%d.bmp", bandidx, imgidx);
+            snprintf(filename, sizeof(filename), "../34/tape2/%d/%d.bmp", bandidx+8, imgidx);
             img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
             if (!img) {
                 printf("Could not open or find the image.\n");
@@ -200,22 +219,22 @@ int main(int argc, char** argv) {
         }
     }
 
-    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1OpenCV.bytes", "w");
-    printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
+    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape2OpenCV.bytes", "w");
+    printf("\n\nExpected size of maxVolSnippetImageDatas_34tape2.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
     int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
     check(itemsWritten == 1, "write to file failed!");
     int rc = fclose(outfile); 
     check(rc==0, "failed clsoing file"); 
     
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1OpenCV.bytes", "w");
-    printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape2OpenCV.bytes", "w");
+    printf("\n\nExpected size of maxVolSnippetVols_34tape2.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
     itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
     check(itemsWritten == 1, "write to file failed!"); 
     rc = fclose(outfile); 
     check(rc==0, "failed closing file"); 
 
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1OpenCV.bytes", "w");
-    printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape2OpenCV.bytes", "w");
+    printf("\n\nExpected size of vols_34tape2.bytes is %zu\n\n", sizeof(vols));
     itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
     check(itemsWritten == 1, "write to file failed!"); 
     rc = fclose(outfile); 
@@ -226,7 +245,7 @@ int main(int argc, char** argv) {
     // cvShowImage("Display window", dynamicfocusimg);
     // cvWaitKey(0);
 
-    const char* outfileName = "output_24tape1.pgm"; // Can be .png, .bmp, etc., depending on the desired format
+    const char* outfileName = "output_24tape2.pgm"; // Can be .png, .bmp, etc., depending on the desired format
     if (!cvSaveImage(outfileName, dynamicfocusimg, NULL)) {
         printf("Could not save the image.\n");
     }
