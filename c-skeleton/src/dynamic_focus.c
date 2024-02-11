@@ -12,7 +12,9 @@
 
 // so basically... there should only ever be 300+24 snippets saved in memory, because we only need to save the ones with the highest score. 
 unsigned char maxVolSnippetImageDatas[N_BANDS][N_SNIPPETS][CROP_WIDTH * CROP_HEIGHT]; // ~66mb*8 = ~528mb. should be one dimensional array to facilitate faster stitching back together
-int maxVolSnippetVols[N_BANDS][N_SNIPPETS];  // need to set to all 0s in main
+double maxVolSnippetVols[N_BANDS][N_SNIPPETS];  // need to set to all 0s in main
+
+double vols[N_BANDS*N_IMGS*24]; // 24 for number of focusdepths
 
 // TODO: this function should take the tapedir as an argument
 int genDynFocFromTapeDir() 
@@ -29,6 +31,7 @@ int genDynFocFromTapeDir()
     check_mem(paddedCrop); 
 
     char filename[100]; // Adjust the size as necessaryk
+    int vol_i = 0; 
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < N_IMGS; imgidx++) {
@@ -46,11 +49,21 @@ int genDynFocFromTapeDir()
                 int snippetidx = imgidx + cropidx; // NOTE: zero-based indexing
 
                 memcpy(crop, &img->imageData[y*CROP_WIDTH + x], CROP_SIZE); // test?? 
-                paddedCrop = padImg(crop, CROP_WIDTH, CROP_HEIGHT, 0);
+                if(vol_i == 43741) {
+                    // for debug purposes. This is the one where OpenCV and from scratch solution diffes the most (the VOL have a 3k diff)
+                    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolDiffCropFromScratch.bytes", "w");
+                    int tmp = fwrite(crop, CROP_SIZE, 1, outfile); 
+                    check(fclose(outfile)==0, "couldn't close file"); 
+                    check(tmp == 1, "write to file failed"); 
+                }
+                // paddedCrop = padImg(crop, CROP_WIDTH, CROP_HEIGHT, 0);
+                paddedCrop = padImgReflective(crop, CROP_WIDTH, CROP_HEIGHT);
                 check(paddedCrop != NULL, "padImg returned NULL");
 
                 double vol = calcVol(paddedCrop, CROP_WIDTH, CROP_HEIGHT);
                 check(vol != -1, "calcVol returned error (-1)!");
+                check(vol != 0.0, "vol is 0.0!");
+                vols[vol_i++] = vol;
                 
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // printf("\n\nsnippet has higher vol, copy to maxVolSnippetImageDatas\n\n");
@@ -83,7 +96,13 @@ int genDynFocFromTapeDir()
     check(itemsWritten == 1, "write to file failed!"); 
     rc = fclose(outfile); 
     check(rc==0, "failed closing file"); 
-    // free(outfile); 
+
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1FromScratch.bytes", "w");
+    printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
+    itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
+    check(itemsWritten == 1, "write to file failed!"); 
+    rc = fclose(outfile); 
+    check(rc==0, "failed closing file"); 
 
     destroyImage(img);
     img = NULL; 

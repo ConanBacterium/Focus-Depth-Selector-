@@ -177,6 +177,71 @@ error:
     return NULL;
 }
 
+unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight) {
+    /*
+        Not sure how to reflect the corners, but it doesn't matter with the laplacian since the corners of the kernel are 0 anyway
+    */
+    // printf("\n\npadImgReflective\n\n");
+    int destHeight = srcHeight+2;
+    int destWidth = srcWidth+2;
+    int destSize = destHeight * destWidth;
+    // printf("\n\ndestSize %d\n\n", destSize);
+    //unsigned char *dest = malloc(srcWidth*srcHeight + srcWidth*2 + srcHeight*2 + 4); 
+    unsigned char *dest = malloc(destSize); 
+    check_mem(dest);
+
+    // reflect first row, putting 0 in corners 
+    dest[0] = 0; 
+    // printf("\n\nTrying to memcpy first line, dest[1], src[0], srcWidth: %d\n\n", srcWidth);
+    void *tmp  = memcpy(&dest[1], &src[0], srcWidth); 
+
+    // printf("\n\ntmp %p == %p\n\n", tmp, &dest[1]);
+
+    if(tmp != &dest[1]) {
+        printf("\n\nmemcpy failed\n\n");
+        free(dest); 
+        return NULL; 
+    }
+
+    // printf("\n\nDidn't fail memcpy first line\n\n");
+    dest[destWidth-1] = 0; 
+    // printf("\n\n padded first row\n\n");
+    
+    // copy src adding reflected borders
+    for(int y = 1; y < destHeight-1; y++) {
+        // DEBUG: destWidth, destHeight=10, srcWidth, srcHeight=9, y=9
+        // printf("\n\n1: dest[%d] = src[%d]\n\n", destWidth*y, srcWidth*(y-1));
+        dest[destWidth*y] = src[srcWidth*(y-1)];  // dest[90] = src[80]
+        // printf("\n\n2: dest[%d] = src[%d]\n\n", destWidth*y+1, srcWidth*(y-1));
+        tmp = memcpy(&dest[destWidth*y + 1], &src[srcWidth*(y-1)], srcWidth); // dest[91] = src[81]...src[89]
+        if( tmp != &dest[destWidth*y + 1]) {
+            printf("\n\nmemcpy failed\n\n");
+            free(dest); 
+            return NULL;
+        }
+        // printf("\n\n3: dest[%d] = src[%d]\n\n", destWidth*(y + 1), srcWidth*(y+1)-1);
+        dest[destWidth*(y + 1) - 1] = src[srcWidth*(y) - 1]; // dest[99] = src[89]
+    }
+
+    // reflect last row, putting 0 in corners 
+    // printf("\n\n4: dest[%d] = 0\n\n", destWidth*(destHeight-1));
+    dest[destWidth*(destHeight-1)] = 0; // dest[90]
+    // printf("\n\n5: dest[%d] = src[%d]\n\n", destWidth*(destHeight-1)+1, srcWidth*(srcHeight-1));
+    tmp = memcpy(&dest[destWidth*(destHeight-1)+1], &src[srcWidth*(srcHeight-1)], srcWidth); // dest[91] = src[81]...src[89]
+    if( tmp != &dest[destWidth*(destHeight-1)+1]) {
+        printf("\n\nmemcpy failed\n\n");
+        free(dest); 
+        return NULL;
+    }
+    // printf("\n\n6: dest[%d] = 0\n\n", destWidth*(destHeight)-1);
+    dest[destWidth*(destHeight)-1] = 0; // dest[99]
+
+    return dest;
+
+error: 
+    return NULL;
+}
+
 unsigned char *trimImg(unsigned char *src, int srcWidth, int srcHeight) {
     // rm padding, so rm first and last column/row
     int destHeight = srcHeight-2;

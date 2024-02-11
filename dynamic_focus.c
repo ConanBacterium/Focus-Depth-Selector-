@@ -6,11 +6,6 @@
 #include <time.h>
 #include "dbg.h"
 
-// hoping this will use zero padding instead of border reflect. It doesn't produce a change in 34 tape1 0 0 
-// #include <opencv2/core/types_c.h>
-// #define IPL_BORDER_CONSTANT   244
-
-
 #define N_IMGS 301
 #define N_FOCUSDEPTHS 24
 #define CROP_WIDTH 2560
@@ -28,7 +23,9 @@ struct Crop {
 
 // so basically... there should only ever be 300+24 snippets saved in memory, because we only need to save the ones with the highest score. 
 char maxVolSnippetImageDatas[N_BANDS][N_SNIPPETS][CROP_WIDTH * CROP_HEIGHT]; // ~66mb*8 = ~528mb. should be one dimensional array to facilitate faster stitching back together
-int maxVolSnippetVols[N_BANDS][N_SNIPPETS];  // need to set to all 0s in main
+double maxVolSnippetVols[N_BANDS][N_SNIPPETS];  // need to set to all 0s in main
+
+double vols[N_BANDS*N_IMGS*24]; // 24 for number of focusdepths
 
 struct Crop cropinfos[N_SNIPPETS]; 
 
@@ -139,6 +136,7 @@ int main(int argc, char** argv) {
     printf("shift between imgs (calculated as height / #focus depths): %d px\n", shift);
 
     char filename[100]; // Adjust the size as necessaryk
+    int vol_i = 0; 
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
@@ -169,7 +167,17 @@ int main(int argc, char** argv) {
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
 
+                if(vol_i == 43741) {
+                    // for debug purposes. This is the one where OpenCV and from scratch solution diffes the most (the VOL have a 3k diff)
+                    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolDiffCropOpenCV.bytes", "w");
+                    int tmp = fwrite(cropped->imageData, CROP_HEIGHT*CROP_WIDTH, 1, outfile); 
+                    check(fclose(outfile)==0, "couldn't close file"); 
+                    check(tmp == 1, "write to file failed"); 
+                }
+
                 double vol = calcVarianceOfLaplacian(cropped);
+                check(vol != 0.0, "vol is 0.0!");
+                vols[vol_i++] = vol; 
                 
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
@@ -206,22 +214,17 @@ int main(int argc, char** argv) {
     rc = fclose(outfile); 
     check(rc==0, "failed closing file"); 
 
+    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1OpenCV.bytes", "w");
+    printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
+    itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
+    check(itemsWritten == 1, "write to file failed!"); 
+    rc = fclose(outfile); 
+    check(rc==0, "failed closing file"); 
+
     IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), img->depth, img->nChannels);
-    cvShowImage("Display window", dynamicfocusimg);
-    cvWaitKey(0);
     stitchMaxVolSnippetImageDatas(dynamicfocusimg); 
-    cvShowImage("Display window", dynamicfocusimg);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
-    cvWaitKey(0);
+    // cvShowImage("Display window", dynamicfocusimg);
+    // cvWaitKey(0);
 
     const char* outfileName = "output_24tape1.pgm"; // Can be .png, .bmp, etc., depending on the desired format
     if (!cvSaveImage(outfileName, dynamicfocusimg, NULL)) {

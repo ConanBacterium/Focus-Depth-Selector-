@@ -117,6 +117,53 @@ error:
     return "non mu_assert error"; 
 }
 
+char *test_padImgReflective() {
+    int srcVals[] = {
+        1,1,1,1,1,
+        1,2,1,1,1,
+        1,1,3,1,1,
+        1,1,1,4,1,
+        1,1,1,1,5
+    };
+    int tgtVals[] = {
+        0,1,1,1,1,1,0,
+        1,1,1,1,1,1,1,
+        1,1,2,1,1,1,1,
+        1,1,1,3,1,1,1,
+        1,1,1,1,4,1,1,
+        1,1,1,1,1,5,5,
+        0,1,1,1,1,5,0
+    };
+
+    unsigned char *src = malloc(25);
+    check_mem(src);
+
+    for(int i = 0; i < 25; i++) {
+        src[i] = (unsigned char) srcVals[i];
+    }
+
+    unsigned char *tgt = padImgReflective(src, 5, 5);
+
+    /*
+    printf("\n\n");
+    for(int i = 0; i < 49; i++) {
+        printf("%d,", tgt[i]);
+        if(i%7==6) printf("\n");
+    }
+    */
+
+    for(int i = 0; i < 49; i++) {
+        mu_assert(tgt[i] == (unsigned char) tgtVals[i], "padImg failed to produce expected target!");
+    }
+
+    free(src);
+    free(tgt);
+    return NULL;
+
+error: 
+    return "non mu_assert error"; 
+}
+
 char *test_trimImg() {
     int srcVals[] = {
         0,0,0,0,0,0,0,
@@ -320,6 +367,7 @@ char *all_tests() {
     mu_run_test(test_switchLineOrder);
     mu_run_test(test_var);
     mu_run_test(test_padImg);
+    mu_run_test(test_padImgReflective);
     mu_run_test(test_trimImg);
     mu_run_test(test_laplacianTransform);
 
