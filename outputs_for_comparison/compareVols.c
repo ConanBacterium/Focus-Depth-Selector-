@@ -54,8 +54,8 @@ int parseVols(char* srcPath, void *dest)
 
 void findMaxDiffSnippet() 
 {
-    parseVols("vols_34tape1OpenCV.bytes", &volsOpenCV);
-    parseVols("vols_34tape1FromScratch.bytes", &volsFromScratch);
+    parseVols("vols_34tape2OpenCV.bytes", &volsOpenCV);
+    parseVols("vols_34tape2FromScratch.bytes", &volsFromScratch);
 
     int maxDiff = 0;  
     int maxDiff_i = 0; 

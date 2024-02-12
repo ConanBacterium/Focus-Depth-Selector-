@@ -87,15 +87,19 @@ double var(short *X, int length) {
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
     cvLaplace(img, laplacian, 3);
+    /*
+        // IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
+        // cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
 
-    // IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
-    // cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
+        // CvScalar mean, stdDev;
+        // cvAvgSdv(laplacian, &mean, &stdDev, NULL);
+        // double variance = stdDev.val[0] * stdDev.val[0];
+    */
+     // Cast imageData to short* for correct type access
+    short* laplacianData = (short*)laplacian->imageData;
 
-    // CvScalar mean, stdDev;
-    // cvAvgSdv(laplacian, &mean, &stdDev, NULL);
-    // double variance = stdDev.val[0] * stdDev.val[0];
-
-    double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
+    double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
+    // double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
 
     cvReleaseImage(&laplacian);
     // cvReleaseImage(&laplacian64f);
