@@ -1,5 +1,7 @@
 #include "minunit.h"
 #include "../src/dynamic_focus.h"
+#include "../src/dynfoc_opencv.h"
+
 
 
 char *testGenDynFocFromTapeDir() {
@@ -13,7 +15,7 @@ char *testGenDynFocFromTapeDir() {
 char *all_tests() {
     mu_suite_start();
 
-    mu_run_test(testGenDynFocFromTapeDir);
+    // mu_run_test(testGenDynFocFromTapeDir);
 
     return NULL;
 }

@@ -134,9 +134,9 @@ void compareMaxDiffSnippets() {
 
 int main(int argc, char** argv) 
 {
-    findMaxDiffSnippet();
-
     compareMaxDiffSnippets();
+
+    findMaxDiffSnippet();
 
     return 0; 
 }

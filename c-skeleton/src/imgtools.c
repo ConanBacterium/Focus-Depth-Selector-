@@ -52,6 +52,54 @@ error:
     return -1;
 }
 
+int laplacianTransform_new(unsigned char *src, int *target, int width, int height) {
+    // actually, THIS INSTEAD https://docs.opencv.org/4.x/d2/d2c/tutorial_sobel_derivatives.html
+    if(width < 5 || height < 5) return 1;
+    
+    int Gx[3][3] = { 
+        { -3, 0,  3},
+        {-10, 0, 10},
+        { -3, 0,  3}
+    };
+
+    int Gy[3][3] = { 
+        { -3, -10, -3},
+        { 0,   0,   0},
+        { 3,  10,   3}
+    };
+    
+    // Loop over the pixels, skipping the border for simplicity
+    for (int y = 1; y < height - 1; y++) {
+        for (int x = 1; x < width - 1; x++) {
+            int Gx_sum = 0;
+            int Gy_sum = 0; 
+            // Apply the kernels
+            for (int ky = -1; ky <= 1; ky++) {
+                for (int kx = -1; kx <= 1; kx++) {
+                    Gx_sum += src[(y + ky) * width + (x + kx)] * Gx[ky + 1][kx + 1];
+                    Gy_sum += src[(y + ky) * width + (x + kx)] * Gy[ky + 1][kx + 1];
+                }
+            }
+
+            if (Gx_sum < 0)
+                Gx_sum = (-Gx_sum);
+            if (Gy_sum < 0) 
+                Gy_sum = (-Gy_sum);
+
+            int newValue = Gx_sum + Gy_sum;
+
+            check(y * width + x <= width*height, "should never happen");
+
+            target[y * width + x] = newValue;
+        }
+    }
+
+    return 0; 
+
+error: 
+    return -1;
+}
+
 int destroyImage(IMAGE *img) {
     free(img->imageData);
     img->imageData = NULL; 

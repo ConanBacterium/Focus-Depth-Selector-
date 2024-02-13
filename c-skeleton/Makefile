@@ -1,5 +1,5 @@
-CFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFLAGS)
-LIBS=-ldl $(OPTLIBS)
+CFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -I/usr/local/include/opencv4 -DNDEBUG $(OPTFLAGS)
+LIBS=-ldl -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc  $(OPTLIBS)
 PREFIX?=/usr/local 
 
 SOURCES=$(wildcard src/**/*.c src/*.c) 
@@ -21,7 +21,7 @@ all: $(TARGET) $(SO_TARGET) tests $(PROGRAMS)
 dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS) 
 dev: all 
 
-$(TESTS): $(TARGET) $(SO_TARGET)
+$(TESTS): $(TARGET) $(LIBS) $(SO_TARGET)
 
 $(TARGET): CFLAGS += -fPIC
 $(TARGET): build $(OBJECTS) 

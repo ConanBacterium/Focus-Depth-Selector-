@@ -49,7 +49,7 @@ int genDynFocFromTapeDir()
                 int snippetidx = imgidx + cropidx; // NOTE: zero-based indexing
 
                 memcpy(crop, &img->imageData[y*CROP_WIDTH + x], CROP_SIZE); // test?? 
-                if(vol_i == 43741) {
+                if(vol_i == 9215) {
                     // for debug purposes. This is the one where OpenCV and from scratch solution diffes the most (the VOL have a 3k diff)
                     FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolDiffCropFromScratch.bytes", "w");
                     int tmp = fwrite(crop, CROP_SIZE, 1, outfile); 

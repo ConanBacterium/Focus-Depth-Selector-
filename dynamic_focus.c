@@ -86,7 +86,8 @@ double var(short *X, int length) {
 
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
-    cvLaplace(img, laplacian, 3);
+
+    cvLaplace(img, laplacian, 1);
     /*
         // IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
         // cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
@@ -190,7 +191,7 @@ int main(int argc, char** argv) {
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
 
-                if(vol_i == 43741) {
+                if(vol_i == 9215) {
                     // for debug purposes. This is the one where OpenCV and from scratch solution diffes the most (the VOL have a 3k diff)
                     FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolDiffCropOpenCV.bytes", "w");
                     int tmp = fwrite(cropped->imageData, CROP_HEIGHT*CROP_WIDTH, 1, outfile); 
