@@ -230,56 +230,41 @@ unsigned char *padImgReflective(unsigned char *src, int srcWidth, int srcHeight)
     int destHeight = srcHeight+2;
     int destWidth = srcWidth+2;
     int destSize = destHeight * destWidth;
-    // printf("\n\ndestSize %d\n\n", destSize);
-    //unsigned char *dest = malloc(srcWidth*srcHeight + srcWidth*2 + srcHeight*2 + 4); 
     unsigned char *dest = malloc(destSize); 
     check_mem(dest);
 
-    // reflect first row, 
-    dest[0] = *src; 
-    // printf("\n\nTrying to memcpy first line, dest[1], src[0], srcWidth: %d\n\n", srcWidth);
-    void *tmp  = memcpy(&dest[1], &src[0], srcWidth); 
-
-    // printf("\n\ntmp %p == %p\n\n", tmp, &dest[1]);
-
+    // reflect first row, by putting second row as first row in tgt
+    dest[0] = src[srcWidth*1+1]; // upper left corner should be reflected diagonally
+    void *tmp  = memcpy(&dest[1], &src[srcWidth*1], srcWidth); 
     if(tmp != &dest[1]) {
-        printf("\n\nmemcpy failed\n\n");
+        printf("\n\nmemcpy failed first row reflect\n\n");
         free(dest); 
         return NULL; 
     }
+    dest[destWidth-1] = src[srcWidth*2-2]; // upper right corner should be reflected diagonally
 
-    // printf("\n\nDidn't fail memcpy first line\n\n");
-    dest[destWidth-1] = *(src+srcWidth-1); 
-    // printf("\n\n padded first row\n\n");
-    
     // copy src adding reflected borders
     for(int y = 1; y < destHeight-1; y++) {
         // DEBUG: destWidth, destHeight=10, srcWidth, srcHeight=9, y=9
-        // printf("\n\n1: dest[%d] = src[%d]\n\n", destWidth*y, srcWidth*(y-1));
-        dest[destWidth*y] = src[srcWidth*(y-1)];  // dest[90] = src[80]
-        // printf("\n\n2: dest[%d] = src[%d]\n\n", destWidth*y+1, srcWidth*(y-1));
+        dest[destWidth*y] = src[srcWidth*(y-1)+1];  // dest[90] = src[81]
         tmp = memcpy(&dest[destWidth*y + 1], &src[srcWidth*(y-1)], srcWidth); // dest[91] = src[81]...src[89]
         if( tmp != &dest[destWidth*y + 1]) {
-            printf("\n\nmemcpy failed\n\n");
+            printf("\n\nmemcpy failed inner rows reflect\n\n");
             free(dest); 
             return NULL;
         }
-        // printf("\n\n3: dest[%d] = src[%d]\n\n", destWidth*(y + 1), srcWidth*(y+1)-1);
-        dest[destWidth*(y + 1) - 1] = src[srcWidth*(y) - 1]; // dest[99] = src[89]
+        dest[destWidth*(y + 1) - 1] = src[srcWidth*y-2]; 
     }
 
     // reflect last row, 
-    // printf("\n\n4: dest[%d] = 0\n\n", destWidth*(destHeight-1));
-    dest[destWidth*(destHeight-1)] = *(src+srcWidth*(srcHeight-1)); // dest[90]
-    // printf("\n\n5: dest[%d] = src[%d]\n\n", destWidth*(destHeight-1)+1, srcWidth*(srcHeight-1));
-    tmp = memcpy(&dest[destWidth*(destHeight-1)+1], &src[srcWidth*(srcHeight-1)], srcWidth); // dest[91] = src[81]...src[89]
+    dest[destWidth*(destHeight-1)] = *(src+srcWidth*(srcHeight-2)+1); 
+    tmp = memcpy(&dest[destWidth*(destHeight-1)+1], &src[srcWidth*(srcHeight-2)], srcWidth); // dest[91] = src[81]...src[89]
     if( tmp != &dest[destWidth*(destHeight-1)+1]) {
-        printf("\n\nmemcpy failed\n\n");
+        printf("\n\nmemcpy failed last row reflect\n\n");
         free(dest); 
         return NULL;
     }
-    // printf("\n\n6: dest[%d] = 0\n\n", destWidth*(destHeight)-1);
-    dest[destWidth*(destHeight)-1] = *(src+srcWidth*(srcHeight)-1); // dest[99]
+    dest[destWidth*(destHeight)-1] = *(src+srcWidth*(srcHeight-2)+srcWidth-2); 
 
     return dest;
 
