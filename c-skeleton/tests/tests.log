@@ -4091,3 +4091,136 @@ DEBUG tests/imgtools_tests.c:all_tests:466:
 DEBUG tests/imgtools_tests.c:all_tests:467: 
 ----- test_laplacianTransform
 [ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:466: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:467: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:466: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:467: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:466: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:467: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:466: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:467: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:551: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:540: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:541: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:542: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:543: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:544: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:545: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:546: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:295: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:551: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:540: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:541: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:542: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:543: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:544: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:545: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:546: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:295: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:558: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:547: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:548: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:549: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:550: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:551: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:552: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:553: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:302: errno: None) performing laplacianTransform on src doesn't produce expected values
