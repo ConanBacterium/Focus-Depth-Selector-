@@ -4224,3 +4224,10 @@ DEBUG tests/imgtools_tests.c:all_tests:552:
 DEBUG tests/imgtools_tests.c:all_tests:553: 
 ----- test_laplacianTransform
 [ERROR] (test_laplacianTransform:tests/imgtools_tests.c:302: errno: None) performing laplacianTransform on src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:main:40: ----- RUNNING: ./tests/opencv_fromscratch_comparison_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:all_tests:35: 
+----- test_comparison
+[ERROR] (test_comparison:tests/opencv_fromscratch_comparison_tests.c:21: errno: None) variance of laplacian of opencv and from scratch solutions are not equal

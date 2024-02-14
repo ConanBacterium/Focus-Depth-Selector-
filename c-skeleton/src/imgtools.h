@@ -44,6 +44,7 @@ int loadBnp(IMAGE *img, char *path);
 int switchLineOrder(IMAGE *img);
 
 int laplacianTransform(unsigned char *src, int *target, int width, int height);
+int laplacianTransform_new(unsigned char *src, int *target, int width, int height);
 
 double var(int *X, int length);
 
