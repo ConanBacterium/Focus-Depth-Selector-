@@ -3489,3 +3489,605 @@ DEBUG tests/imgtools_tests.c:all_tests:439:
 DEBUG tests/imgtools_tests.c:all_tests:440: 
 ----- test_laplacianTransform
 [ERROR] (test_laplacianTransform:tests/imgtools_tests.c:336: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:447: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:436: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:437: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:438: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:439: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:338: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:447: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:436: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:437: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:438: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:439: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:338: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:447: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:436: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:437: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:438: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:439: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:338: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:451: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:443: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:444: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:445: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:446: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:342: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:451: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:443: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:444: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:445: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:446: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:342: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:451: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:440: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:441: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:442: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:443: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:444: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:445: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:446: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:342: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:454: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:443: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:444: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:445: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:446: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_laplacianTransform
+DEBUG tests/opencv_fromscratch_comparison_tests.c:main:40: ----- RUNNING: ./tests/opencv_fromscratch_comparison_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:all_tests:35: 
+----- test_comparison
+[ERROR] (test_comparison:tests/opencv_fromscratch_comparison_tests.c:21: errno: None) variance of laplacian of opencv and from scratch solutions are not equal
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:454: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:443: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:444: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:445: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:446: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_laplacianTransform
+DEBUG tests/opencv_fromscratch_comparison_tests.c:main:40: ----- RUNNING: ./tests/opencv_fromscratch_comparison_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:all_tests:35: 
+----- test_comparison
+[ERROR] (test_comparison:tests/opencv_fromscratch_comparison_tests.c:21: errno: None) variance of laplacian of opencv and from scratch solutions are not equal
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+DEBUG tests/opencv_fromscratch_comparison_tests.c:main:40: ----- RUNNING: ./tests/opencv_fromscratch_comparison_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:all_tests:35: 
+----- test_comparison
+[ERROR] (test_comparison:tests/opencv_fromscratch_comparison_tests.c:21: errno: None) variance of laplacian of opencv and from scratch solutions are not equal
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:349: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:349: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+DEBUG tests/opencv_fromscratch_comparison_tests.c:main:40: ----- RUNNING: ./tests/opencv_fromscratch_comparison_tests
+
+DEBUG tests/opencv_fromscratch_comparison_tests.c:all_tests:35: 
+----- test_comparison
+[ERROR] (test_comparison:tests/opencv_fromscratch_comparison_tests.c:21: errno: None) variance of laplacian of opencv and from scratch solutions are not equal
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:349: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:458: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:447: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:448: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:449: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:450: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:349: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:462: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:454: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:455: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:456: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:457: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:353: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:462: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:451: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:452: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:454: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:455: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:456: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:457: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:353: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:464: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:453: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:454: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:455: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:456: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:457: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:458: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:459: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:355: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:467: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:456: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:457: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:458: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:459: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:460: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:358: errno: None) performing lapl transf on 2560x80 src doesn't produce expected values
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:467: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:456: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:457: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:458: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:459: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:460: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:173: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+Segmentation fault
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+[ERROR] (test_padImgReflective:tests/imgtools_tests.c:178: errno: None) padImg failed to produce expected target!
+DEBUG tests/dynamic_focus_tests.c:main:23: ----- RUNNING: ./tests/dynamic_focus_tests
+
+DEBUG tests/imgtools_tests.c:main:472: ----- RUNNING: ./tests/imgtools_tests
+
+DEBUG tests/imgtools_tests.c:all_tests:461: 
+----- test_loadBnp_destroyImage
+DEBUG tests/imgtools_tests.c:all_tests:462: 
+----- test_switchLineOrder
+DEBUG tests/imgtools_tests.c:all_tests:463: 
+----- test_var
+DEBUG tests/imgtools_tests.c:all_tests:464: 
+----- test_padImg
+DEBUG tests/imgtools_tests.c:all_tests:465: 
+----- test_padImgReflective
+DEBUG tests/imgtools_tests.c:all_tests:466: 
+----- test_trimImg
+DEBUG tests/imgtools_tests.c:all_tests:467: 
+----- test_laplacianTransform
+[ERROR] (test_laplacianTransform:tests/imgtools_tests.c:296: errno: None) performing laplacianTransform on src doesn't produce expected values

@@ -1,6 +1,23 @@
 #include "minunit.h"
 #include "../src/imgtools.h"
 
+void readIntArray(const char *filename, int *array, int length) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file: %s\n", filename);
+        exit(1);
+    }
+
+    for (int i = 0; i < length; i++) {
+        if (fscanf(file, "%d,", &array[i]) != 1) {
+            fprintf(stderr, "Error reading integer from file: %s\n", filename);
+            exit(1);
+        }
+        // printf("%d,", array[i]);
+    }
+
+    fclose(file);
+}
 
 char *test_loadBnp_destroyImage() {
     IMAGE *img = malloc(sizeof(IMAGE));
@@ -119,20 +136,20 @@ error:
 
 char *test_padImgReflective() {
     int srcVals[] = {
-        1,1,1,1,1,
-        1,2,1,1,1,
-        1,1,3,1,1,
-        1,1,1,4,1,
-        1,1,1,1,5
+        130,200,215,213,94,
+        208,245,68,190,60,
+        141,50,127,195,164,
+        27,106,20,46,253,
+        248,98,200,44,75  
     };
     int tgtVals[] = {
-        1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,
-        1,1,2,1,1,1,1,
-        1,1,1,3,1,1,1,
-        1,1,1,1,4,1,1,
-        1,1,1,1,1,5,5,
-        1,1,1,1,1,5,5
+       245,208,245,68,190,60,190,
+       200,130,200,215,213,94,213,
+       245,208,245,68,190,60,190,
+       50,141,50,127,195,164,195,
+       106,27,106,20,46,253,46,
+       98,248,98,200,44,75,44,
+       106,27,106,20,46,253,46
     };
 
     unsigned char *src = malloc(25);
@@ -143,8 +160,13 @@ char *test_padImgReflective() {
     }
 
     unsigned char *tgt = padImgReflective(src, 5, 5);
-
     
+    printf("\n\n");
+    for(int i = 0; i < 25; i++) {
+        printf("%d,", src[i]);
+        if(i%5==4) printf("\n");
+    }
+
     printf("\n\n");
     for(int i = 0; i < 49; i++) {
         printf("%d,", tgt[i]);
@@ -201,22 +223,6 @@ error:
     return "non mu_assert error";
 }
 
-void readIntArray(const char *filename, int *array, int length) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file: %s\n", filename);
-        exit(1);
-    }
-
-    for (int i = 0; i < length; i++) {
-        if (fscanf(file, "%d,", &array[i]) != 1) {
-            fprintf(stderr, "Error reading integer from file: %s\n", filename);
-            exit(1);
-        }
-    }
-
-    fclose(file);
-}
 
 char *test_laplacianTransform(){
     int *paddedTgt = malloc(22*22*sizeof(int)); // take account of padding
@@ -304,14 +310,21 @@ char *test_laplacianTransform(){
     readIntArray("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/c-skeleton/tests/src2560x80nonlaplacian.txt", src2_int, rows * cols);
     readIntArray("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/c-skeleton/tests/tgt2560x80laplacian.txt", expected2, rows * cols);
 
+    // for(int i = 0; i < rows * cols; i++) {
+    //     printf("%d,", expected2[i]);
+    // }
+
+    // return NULL;
+
     unsigned char *src2 = malloc(cols*rows); 
     check_mem(src2);
-
-    for(int i = 0; i < cols*rows; i++) {
-        printf("%d,", src2_int[i]);
-        src2[i] = (unsigned char) src2_int[i];
-    }
-    printf("\n\n");
+    /*
+        for(int i = 0; i < cols*rows; i++) {
+            printf("%d,", src2_int[i]);
+            src2[i] = (unsigned char) src2_int[i];
+        }
+        printf("\n\n");
+    */
     /*
         for(int i = 0; i < cols*rows; i++) {
             printf("%d,", expected2[i]);
@@ -320,18 +333,30 @@ char *test_laplacianTransform(){
     */
     unsigned char *paddedSrc2 = padImgReflective(src2, cols, rows); 
     check(paddedSrc2 != NULL, "paddedSrc is null, so padding operation failed");
+    for(int i = 0; i < cols*rows; i++) {
+        if(i % cols == 0) 
+            printf("\n");
+        printf("%d,", paddedSrc2[i]);
+    }
 
     int *paddedTgt2 = malloc((rows+2)*(cols+2)*sizeof(int)); // take account of padding
     check_mem(paddedTgt2);
     
     rc = laplacianTransform(paddedSrc2, paddedTgt2, cols+2, rows+2); 
+    if(rc != 0) {
+        printf("laplacianTransform failed on paddedSrc2!");
+        exit(1);
+    }
     int *tgt2 = trimImgInt(paddedTgt2, cols+2, rows+2);
-    /*
-        for(int i = 0; i < cols*rows; i++) {
-            printf("%d,", tgt2[i]);
-        }
-        printf("\n\n");
-    */
+    
+    // for(int i = 0; i < cols*rows; i++) {
+    //     if(tgt2[i] != expected2[i]) {
+    //         printf("i %d expected %d got %d src is %d\n", i, expected2[i], tgt[i], src[i]);
+    //     }
+    //     // printf("%d,", tgt2[i]);
+    // }
+    // printf("\n\n");
+    
 
     mu_assert(rc==0, "laplcianTransform failed on 2560x80 img");
     rc = memcmp(tgt2, &expected2, rows*cols*sizeof(int));
