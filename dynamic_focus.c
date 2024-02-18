@@ -90,15 +90,35 @@ double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
     cvLaplace(img, laplacian, 1);
-    /*
-        // IplImage* laplacian64f = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
-        // cvConvertScale(laplacian, laplacian64f, 1.0, 0.0);
+    
+    // Cast imageData to short* for correct type access
+    short* laplacianData = (short*)laplacian->imageData;
 
-        // CvScalar mean, stdDev;
-        // cvAvgSdv(laplacian, &mean, &stdDev, NULL);
-        // double variance = stdDev.val[0] * stdDev.val[0];
-    */
-     // Cast imageData to short* for correct type access
+    double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
+    // double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
+
+    cvReleaseImage(&laplacian);
+    // cvReleaseImage(&laplacian64f);
+
+    return variance;
+}
+
+double calcVarianceOfLaplacianCustom(IplImage* img) {
+    printf("WARNING, calcVarianceOfLaplacianCustom is not finished and thus faulty! ");
+    // IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
+
+    CvMat* kernel = cvCreateMat(3, 3, CV_32FC1);
+    CV_MAT_ELEM(*kernel, float, 0, 0) = 0; CV_MAT_ELEM(*kernel, float, 0, 1) = -1; CV_MAT_ELEM(*kernel, float, 0, 2) = 0;
+    CV_MAT_ELEM(*kernel, float, 1, 0) = -1; CV_MAT_ELEM(*kernel, float, 1, 1) = 4; CV_MAT_ELEM(*kernel, float, 1, 2) = -1;
+    CV_MAT_ELEM(*kernel, float, 2, 0) = 0; CV_MAT_ELEM(*kernel, float, 2, 1) = -1; CV_MAT_ELEM(*kernel, float, 2, 2) = 0;
+
+    // Output image
+    IplImage* output_image = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 1); // NOTE HERE that the IPL_DEPTH_8U doesn't allow negative values and will clip to 0
+
+    // Apply the filter
+    cvFilter2D(input_image, output_image, kernel, cvPoint(-1, -1));
+    
+    // Cast imageData to short* for correct type access
     short* laplacianData = (short*)laplacian->imageData;
 
     double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
@@ -145,8 +165,8 @@ void stitchMaxVolSnippetImageDatas(IplImage* dest) {
 
 int main(int argc, char** argv) 
 {
-    if (argc < 5) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname \n", argv[0]);
+    if (argc != 6) {
+        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel \n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -154,6 +174,7 @@ int main(int argc, char** argv)
     int firstBandNo = atoi(argv[2]);
     char *outputdir = argv[3];
     char *jobname = argv[4];
+    char useCKernel = atoi(argv[5]);
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     int nFocusDepths = N_FOCUSDEPTHS;
@@ -164,6 +185,7 @@ int main(int argc, char** argv)
 
     char filename[100]; // Adjust the size as necessaryk
     int vol_i = 0; 
+    double vol;
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
@@ -189,7 +211,10 @@ int main(int argc, char** argv)
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
 
-                double vol = calcVarianceOfLaplacian(cropped);
+                if (useCKernel)
+                    vol = calcVarianceOfLaplacianCustom(cropped); 
+                else 
+                    vol = calcVarianceOfLaplacian(cropped);
                 check(vol != 0.0, "vol is 0.0!");
                 vols[vol_i++] = vol; 
                 
