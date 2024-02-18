@@ -141,23 +141,25 @@ void stitchMaxVolSnippetImageDatas(IplImage* dest) {
     }
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) 
+{
+    if (argc < 5) {
+        printf("Usage: %s inputdir firstbandNo outputdir jobname \n", argv[0]);
+        return 1; // Exit with an error code
+    }
+
+    char *inputdir = argv[1];
+    int firstBandNo = atoi(argv[2]);
+    char *outputdir = argv[3];
+    char *jobname = argv[4];
+
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     int nFocusDepths = N_FOCUSDEPTHS;
     int nImgs = N_IMGS;
+    int shift = CROP_HEIGHT; 
 
-    cvNamedWindow("Display window", CV_WINDOW_AUTOSIZE);
-    
+    // cvNamedWindow("Display window", CV_WINDOW_AUTOSIZE);
     IplImage* img; IplImage* cropped;
-    img = cvLoadImage("../tape1/0/0.bmp", CV_LOAD_IMAGE_GRAYSCALE);
-    if (!img) {
-        printf("Could not open or find the image.\n");
-        return -1;
-    }
-    printLplImageAttributes(img);
-    // return 0;
-    int shift = img->height / N_FOCUSDEPTHS; 
-    printf("shift between imgs (calculated as height / #focus depths): %d px\n", shift);
 
     char filename[100]; // Adjust the size as necessaryk
     int vol_i = 0; 
@@ -165,20 +167,12 @@ int main(int argc, char** argv) {
         int cropcounter = 0; // used to place the crop structs in crops array
         // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
         for(int imgidx = 0; imgidx < nImgs; imgidx++) {
-            snprintf(filename, sizeof(filename), "../34/tape2/%d/%d.bmp", bandidx+8, imgidx);
+            snprintf(filename, sizeof(filename), "%s/%d/%d.bmp", inputdir, bandidx+firstBandNo, imgidx);
             img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
             if (!img) {
                 printf("Could not open or find the image.\n");
                 return -1;
             }
-
-            ///// these two prints are to get VOLs to have something to test against in own from scratch library
-            // if(imgidx==0 && cropidx==0) {
-            //     printf("%s has vol %f\n", filename, calcVarianceOfLaplacian(img));
-            // }
-            // if(imgidx==0) {
-            //     printf("%s crop %d has vol %f\n", filename, cropidx, vol);
-            // }
 
             int x = 0; int y = 0; 
             int cropsize_x = img->width;
@@ -190,14 +184,6 @@ int main(int argc, char** argv) {
 
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
-
-                if(vol_i == 9215) {
-                    // for debug purposes. This is the one where OpenCV and from scratch solution diffes the most (the VOL have a 3k diff)
-                    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolDiffCropOpenCV.bytes", "w");
-                    int tmp = fwrite(cropped->imageData, CROP_HEIGHT*CROP_WIDTH, 1, outfile); 
-                    check(fclose(outfile)==0, "couldn't close file"); 
-                    check(tmp == 1, "write to file failed"); 
-                }
 
                 double vol = calcVarianceOfLaplacian(cropped);
                 check(vol != 0.0, "vol is 0.0!");
@@ -224,38 +210,36 @@ int main(int argc, char** argv) {
         }
     }
 
-    FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape2OpenCV.bytes", "w");
-    printf("\n\nExpected size of maxVolSnippetImageDatas_34tape2.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
-    int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
-    check(itemsWritten == 1, "write to file failed!");
-    int rc = fclose(outfile); 
-    check(rc==0, "failed clsoing file"); 
-    
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape2OpenCV.bytes", "w");
-    printf("\n\nExpected size of maxVolSnippetVols_34tape2.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
-    itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
-    check(itemsWritten == 1, "write to file failed!"); 
-    rc = fclose(outfile); 
-    check(rc==0, "failed closing file"); 
+    /*
+        FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1OpenCV.bytes", "w");
+        printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
+        int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
+        check(itemsWritten == 1, "write to file failed!");
+        int rc = fclose(outfile); 
+        check(rc==0, "failed clsoing file"); 
 
-    outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape2OpenCV.bytes", "w");
-    printf("\n\nExpected size of vols_34tape2.bytes is %zu\n\n", sizeof(vols));
-    itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
-    check(itemsWritten == 1, "write to file failed!"); 
-    rc = fclose(outfile); 
-    check(rc==0, "failed closing file"); 
+        outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1OpenCV.bytes", "w");
+        printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
+        itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
+        check(itemsWritten == 1, "write to file failed!"); 
+        rc = fclose(outfile); 
+        check(rc==0, "failed closing file"); 
+
+        outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1OpenCV.bytes", "w");
+        printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
+        itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
+        check(itemsWritten == 1, "write to file failed!"); 
+        rc = fclose(outfile); 
+        check(rc==0, "failed closing file"); 
+    */
 
     IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), img->depth, img->nChannels);
     stitchMaxVolSnippetImageDatas(dynamicfocusimg); 
-    // cvShowImage("Display window", dynamicfocusimg);
-    // cvWaitKey(0);
-
-    const char* outfileName = "output_24tape2.pgm"; // Can be .png, .bmp, etc., depending on the desired format
-    if (!cvSaveImage(outfileName, dynamicfocusimg, NULL)) {
+    
+    snprintf(filename, sizeof(filename), "%s.pgm", jobname);
+    if (!cvSaveImage(filename, dynamicfocusimg, NULL)) {
         printf("Could not save the image.\n");
     }
-
-    cvWaitKey(0);
 
     // printLplImageAttributes(img);
 endAndClean:
@@ -264,7 +248,7 @@ endAndClean:
     cvReleaseImage(&cropped); 
 
     // Destroy the window
-    cvDestroyWindow("Display window");
+    // cvDestroyWindow("Display window");
 
     return 0;
 
@@ -273,7 +257,7 @@ error:
     cvReleaseImage(&cropped); 
 
     // Destroy the window
-    cvDestroyWindow("Display window");
+    // cvDestroyWindow("Display window");
 
     return -1; 
 }
