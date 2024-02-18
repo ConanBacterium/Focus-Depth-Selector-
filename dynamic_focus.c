@@ -12,6 +12,8 @@
 #define CROP_HEIGHT 80
 #define N_BANDS 8 
 #define N_SNIPPETS 324
+#define IMG_DEPTH 8
+#define N_CHANNELS 1
 
 
 struct Crop {
@@ -158,7 +160,6 @@ int main(int argc, char** argv)
     int nImgs = N_IMGS;
     int shift = CROP_HEIGHT; 
 
-    // cvNamedWindow("Display window", CV_WINDOW_AUTOSIZE);
     IplImage* img; IplImage* cropped;
 
     char filename[100]; // Adjust the size as necessaryk
@@ -172,6 +173,9 @@ int main(int argc, char** argv)
             if (!img) {
                 printf("Could not open or find the image.\n");
                 return -1;
+            } 
+            if (bandidx == 0 && imgidx == 0) {
+                printf("imgdepth: %d, nChannels: %d\n", img->depth, img->nChannels);
             }
 
             int x = 0; int y = 0; 
@@ -200,13 +204,15 @@ int main(int argc, char** argv)
                 cropinfos[cropcounter].snippetidx = snippetidx;
                 cropinfos[cropcounter].vol = vol; 
 
-                // printCropInfo(&cropinfos[cropcounter]);
-                // printf("\n---\n");
                 cvResetImageROI(img); 
-                // cvShowImage("Display window", cropped);
+
                 y+=shift;
-                // goto endAndClean;
             }
+
+            cvReleaseImage(&img);
+            img = NULL;
+            cvReleaseImage(&cropped); 
+            cropped = NULL;
         }
     }
 
@@ -233,7 +239,7 @@ int main(int argc, char** argv)
         check(rc==0, "failed closing file"); 
     */
 
-    IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), img->depth, img->nChannels);
+    IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), IMG_DEPTH, N_CHANNELS);
     stitchMaxVolSnippetImageDatas(dynamicfocusimg); 
     
     snprintf(filename, sizeof(filename), "%s.pgm", jobname);
@@ -241,14 +247,7 @@ int main(int argc, char** argv)
         printf("Could not save the image.\n");
     }
 
-    // printLplImageAttributes(img);
-endAndClean:
-    // Release the image
-    cvReleaseImage(&img);
-    cvReleaseImage(&cropped); 
-
-    // Destroy the window
-    // cvDestroyWindow("Display window");
+    cvReleaseImage(&dynamicfocusimg);
 
     return 0;
 
