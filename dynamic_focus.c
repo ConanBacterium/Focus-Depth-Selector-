@@ -10,6 +10,7 @@
 #define N_FOCUSDEPTHS 24
 #define CROP_WIDTH 2560
 #define CROP_HEIGHT 80
+#define CROP_SIZE (2560*80)
 #define N_BANDS 8 
 #define N_SNIPPETS 324
 #define IMG_DEPTH 8
@@ -69,7 +70,6 @@ void printCropInfo(struct Crop* crop) {
     printf("imgidx: %d\ncropidx: %d\nsnippetidx: %d\nvol: %d\n", crop->imgidx, crop->cropidx, crop->snippetidx, crop->vol);
 }
 
-
 double var(short *X, int length) {
     //welfords online algorithm
     double mean = 0.0;
@@ -114,7 +114,7 @@ double calcVarianceOfLaplacianCustom(IplImage* img) {
 
     // Output image
     IplImage* output_image = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 1); // NOTE HERE that the IPL_DEPTH_8U doesn't allow negative values and will clip to 0
-
+    /*
     // Apply the filter
     cvFilter2D(input_image, output_image, kernel, cvPoint(-1, -1));
     
@@ -126,9 +126,14 @@ double calcVarianceOfLaplacianCustom(IplImage* img) {
 
     cvReleaseImage(&laplacian);
     // cvReleaseImage(&laplacian64f);
+    */
 
-    return variance;
+    cvReleaseImage(&output_image);
+
+    // return variance;
+    return 0.0;
 }
+
 
 void saveCropToStaticArray(IplImage* cropped, int bandidx, int maxVolSnippetImageDatasIdx) {
     if (cropped->width != CROP_WIDTH || cropped->height != CROP_HEIGHT) {
@@ -163,10 +168,26 @@ void stitchMaxVolSnippetImageDatas(IplImage* dest) {
     }
 }
 
+int saveCropToFullImg(IplImage* cropped, IplImage* fullimg, int bandidx, int snippetidx) {
+    char *cdata = cropped->imageData;
+    char *fidata= fullimg->imageData;
+    int offset = N_BANDS * CROP_WIDTH * CROP_HEIGHT * snippetidx + bandidx * CROP_WIDTH; 
+
+    for(int y = 0; y < CROP_HEIGHT; y++) {
+        void *adr = memcpy(&fidata[offset + y * CROP_WIDTH * N_BANDS], &cdata[y*CROP_WIDTH], CROP_WIDTH);
+        if(adr != &fidata[offset + y * CROP_WIDTH * N_BANDS]) {
+            printf("memcpy failed in saveCropToFullImg!\n");
+            return -1;
+        }
+    }
+
+    return 0;
+}
+
 int main(int argc, char** argv) 
 {
-    if (argc != 6) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel \n", argv[0]);
+    if (argc != 7) {
+        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel directParse \n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -175,6 +196,7 @@ int main(int argc, char** argv)
     char *outputdir = argv[3];
     char *jobname = argv[4];
     char useCKernel = atoi(argv[5]);
+    char directParse = atoi(argv[6]);
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     int nFocusDepths = N_FOCUSDEPTHS;
@@ -182,6 +204,7 @@ int main(int argc, char** argv)
     int shift = CROP_HEIGHT; 
 
     IplImage* img; IplImage* cropped;
+    IplImage* fullimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), IMG_DEPTH, N_CHANNELS);
 
     char filename[100]; // Adjust the size as necessaryk
     int vol_i = 0; 
@@ -221,7 +244,14 @@ int main(int argc, char** argv)
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
                     // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
-                    saveCropToStaticArray(cropped, bandidx, snippetidx);
+                    if(directParse) {
+                        int rc = saveCropToFullImg(cropped, fullimg, bandidx, snippetidx);
+                        if(rc != 0) {
+                            goto error;
+                        }
+                    } else {
+                        saveCropToStaticArray(cropped, bandidx, snippetidx);
+                    }
                     maxVolSnippetVols[bandidx][snippetidx] = vol;
                 }
                 cropinfos[cropcounter].imgidx = imgidx;
@@ -240,48 +270,22 @@ int main(int argc, char** argv)
             cropped = NULL;
         }
     }
-
-    /*
-        FILE *outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetImageDatas_34tape1OpenCV.bytes", "w");
-        printf("\n\nExpected size of maxVolSnippetImageDatas_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetImageDatas));
-        int itemsWritten = fwrite(&maxVolSnippetImageDatas, sizeof(maxVolSnippetImageDatas), 1, outfile);
-        check(itemsWritten == 1, "write to file failed!");
-        int rc = fclose(outfile); 
-        check(rc==0, "failed clsoing file"); 
-
-        outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/maxVolSnippetVols_34tape1OpenCV.bytes", "w");
-        printf("\n\nExpected size of maxVolSnippetVols_34tape1.bytes is %zu\n\n", sizeof(maxVolSnippetVols));
-        itemsWritten = fwrite(&maxVolSnippetVols, sizeof(maxVolSnippetVols), 1, outfile);  // line 82 !!
-        check(itemsWritten == 1, "write to file failed!"); 
-        rc = fclose(outfile); 
-        check(rc==0, "failed closing file"); 
-
-        outfile = fopen("/mnt/c/Users/jaro/Documents/A_privat_dev/DynamicFocus/C/outputs_for_comparison/vols_34tape1OpenCV.bytes", "w");
-        printf("\n\nExpected size of vols_34tape1.bytes is %zu\n\n", sizeof(vols));
-        itemsWritten = fwrite(&vols, sizeof(vols), 1, outfile);  // line 82 !!
-        check(itemsWritten == 1, "write to file failed!"); 
-        rc = fclose(outfile); 
-        check(rc==0, "failed closing file"); 
-    */
-
-    IplImage* dynamicfocusimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), IMG_DEPTH, N_CHANNELS);
-    stitchMaxVolSnippetImageDatas(dynamicfocusimg); 
+    if(!directParse)
+        stitchMaxVolSnippetImageDatas(fullimg); 
     
     snprintf(filename, sizeof(filename), "%s.pgm", jobname);
-    if (!cvSaveImage(filename, dynamicfocusimg, NULL)) {
+    if (!cvSaveImage(filename, fullimg, NULL)) {
         printf("Could not save the image.\n");
     }
 
-    cvReleaseImage(&dynamicfocusimg);
+    cvReleaseImage(&fullimg);
 
     return 0;
 
 error: 
     cvReleaseImage(&img);
     cvReleaseImage(&cropped); 
-
-    // Destroy the window
-    // cvDestroyWindow("Display window");
+    cvReleaseImage(&fullimg);
 
     return -1; 
 }
