@@ -4,3 +4,12 @@ This is a program to construct the sharpest possible image from the raw data fro
 
 ![image](https://github.com/ConanBacterium/Focus-Depth-Selector-/assets/1878037/755f846a-801d-4ac4-81af-404554a4e259)
 
+--------------------
+3 parseModes:
+
+* One takes vol of each crop and if it's the current biggest vol, the crop gets saved to a static array of crops that will later on be stitched together into full img. 
+* Another copies directly into the final full img, thus skipping the final stitching together of the static array
+* The last mode saves the pointers to all the crops and only when the snippet will no longer be looked at, the crop is stitched onto the full img. This way no snippet gets overwritten within the full img, thus saving excess copying. 
+
+--------------------
+I see no other optimisations apart from loop unrolling (maybe) and using threads. Maybe it makes sense to modify both .py and .c to use custom kernel, and see if it can be made faster by using SIMD and calculate the variance and laplacian in the same pass, this way there should be fewer data transformations and less writing to memory?? 

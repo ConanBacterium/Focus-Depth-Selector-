@@ -30,6 +30,8 @@ double maxVolSnippetVols[N_BANDS][N_SNIPPETS];  // need to set to all 0s in main
 
 double vols[N_BANDS*N_IMGS*24]; // 24 for number of focusdepths
 
+IplImage *maxVolSnippetPtrs[N_BANDS][N_SNIPPETS]; // for parseMode 3 
+
 struct Crop cropinfos[N_SNIPPETS]; 
 
 void printLplImageAttributes(IplImage* img) {
@@ -187,7 +189,7 @@ int saveCropToFullImg(IplImage* cropped, IplImage* fullimg, int bandidx, int sni
 int main(int argc, char** argv) 
 {
     if (argc != 7) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel directParse \n", argv[0]);
+        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel parseMode \n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -196,9 +198,12 @@ int main(int argc, char** argv)
     char *outputdir = argv[3];
     char *jobname = argv[4];
     char useCKernel = atoi(argv[5]);
-    char directParse = atoi(argv[6]);
+    char parseMode = atoi(argv[6]);
+    if(parseMode < 0 || parseMode > 3)
+        printf("parseMode option should be 0 for saving in static array and then stitching together, 1 for saving directly to fullimg, 2 for not saving and not freeing until all focusdepths of snippetidx has been generated and then the 23 lowest are freed and the best is saved directly to fullimg\n"); 
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
+    memset(maxVolSnippetPtrs, 0, sizeof(maxVolSnippetPtrs));
     int nFocusDepths = N_FOCUSDEPTHS;
     int nImgs = N_IMGS;
     int shift = CROP_HEIGHT; 
@@ -244,15 +249,29 @@ int main(int argc, char** argv)
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
                     // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
-                    if(directParse) {
+                    if(parseMode == 1) {
                         int rc = saveCropToFullImg(cropped, fullimg, bandidx, snippetidx);
                         if(rc != 0) {
                             goto error;
                         }
-                    } else {
+                    } else if (parseMode == 2) {
                         saveCropToStaticArray(cropped, bandidx, snippetidx);
+                    } else if (parseMode == 3) {
+                        cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]); // not sure if it's legal to cvReleaseImage(NULL) so maybe this will fail. 
+                        maxVolSnippetPtrs[bandidx][snippetidx] = cropped;
                     }
                     maxVolSnippetVols[bandidx][snippetidx] = vol;
+                }
+
+                if(parseMode == 3) {
+                    // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
+                    if(cropidx == 0 || (imgidx == N_IMGS-1)) {
+                        int rc = saveCropToFullImg(maxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
+                        if( rc != 0) {
+                            goto error;
+                        } 
+                        cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]);
+                    }
                 }
                 cropinfos[cropcounter].imgidx = imgidx;
                 cropinfos[cropcounter].cropidx = cropidx;
@@ -266,11 +285,13 @@ int main(int argc, char** argv)
 
             cvReleaseImage(&img);
             img = NULL;
-            cvReleaseImage(&cropped); 
-            cropped = NULL;
+            if(parseMode != 3) {
+                cvReleaseImage(&cropped); 
+                cropped = NULL;
+            }
         }
     }
-    if(!directParse)
+    if(!parseMode)
         stitchMaxVolSnippetImageDatas(fullimg); 
     
     snprintf(filename, sizeof(filename), "%s.pgm", jobname);
