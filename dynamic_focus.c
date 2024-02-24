@@ -34,6 +34,11 @@ IplImage *maxVolSnippetPtrs[N_BANDS][N_SNIPPETS]; // for parseMode 3
 
 struct Crop cropinfos[N_SNIPPETS]; 
 
+clock_t start, end;
+double clock_time_used_lapl[N_BANDS*N_IMGS*24];
+double clock_time_used_var[N_BANDS*N_IMGS*24];
+int clock_time_idx = 0;
+
 void printLplImageAttributes(IplImage* img) {
     printf("align: %d\n", img->align);
     printf("alphaChannel: %d\n", img->alphaChannel);
@@ -91,51 +96,23 @@ double var(short *X, int length) {
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
+    start = clock(); 
     cvLaplace(img, laplacian, 1);
+    end = clock(); 
+    clock_time_used_lapl[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
     
     // Cast imageData to short* for correct type access
     short* laplacianData = (short*)laplacian->imageData;
-
+    start = clock();
     double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
-    // double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
+    end = clock(); 
+    clock_time_used_var[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
+    clock_time_idx++;
 
     cvReleaseImage(&laplacian);
-    // cvReleaseImage(&laplacian64f);
 
     return variance;
 }
-
-double calcVarianceOfLaplacianCustom(IplImage* img) {
-    printf("WARNING, calcVarianceOfLaplacianCustom is not finished and thus faulty! ");
-    // IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
-
-    CvMat* kernel = cvCreateMat(3, 3, CV_32FC1);
-    CV_MAT_ELEM(*kernel, float, 0, 0) = 0; CV_MAT_ELEM(*kernel, float, 0, 1) = -1; CV_MAT_ELEM(*kernel, float, 0, 2) = 0;
-    CV_MAT_ELEM(*kernel, float, 1, 0) = -1; CV_MAT_ELEM(*kernel, float, 1, 1) = 4; CV_MAT_ELEM(*kernel, float, 1, 2) = -1;
-    CV_MAT_ELEM(*kernel, float, 2, 0) = 0; CV_MAT_ELEM(*kernel, float, 2, 1) = -1; CV_MAT_ELEM(*kernel, float, 2, 2) = 0;
-
-    // Output image
-    IplImage* output_image = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 1); // NOTE HERE that the IPL_DEPTH_8U doesn't allow negative values and will clip to 0
-    /*
-    // Apply the filter
-    cvFilter2D(input_image, output_image, kernel, cvPoint(-1, -1));
-    
-    // Cast imageData to short* for correct type access
-    short* laplacianData = (short*)laplacian->imageData;
-
-    double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
-    // double variance = var(laplacian->imageData, CROP_HEIGHT*CROP_WIDTH);
-
-    cvReleaseImage(&laplacian);
-    // cvReleaseImage(&laplacian64f);
-    */
-
-    cvReleaseImage(&output_image);
-
-    // return variance;
-    return 0.0;
-}
-
 
 void saveCropToStaticArray(IplImage* cropped, int bandidx, int maxVolSnippetImageDatasIdx) {
     if (cropped->width != CROP_WIDTH || cropped->height != CROP_HEIGHT) {
@@ -188,8 +165,8 @@ int saveCropToFullImg(IplImage* cropped, IplImage* fullimg, int bandidx, int sni
 
 int main(int argc, char** argv) 
 {
-    if (argc != 7) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname customKernel parseMode \n", argv[0]);
+    if (argc != 6) {
+        printf("Usage: %s inputdir firstbandNo outputdir jobname parseMode \n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -197,8 +174,7 @@ int main(int argc, char** argv)
     int firstBandNo = atoi(argv[2]);
     char *outputdir = argv[3];
     char *jobname = argv[4];
-    char useCKernel = atoi(argv[5]);
-    char parseMode = atoi(argv[6]);
+    char parseMode = atoi(argv[5]);
     if(parseMode < 0 || parseMode > 3)
         printf("parseMode option should be 0 for saving in static array and then stitching together, 1 for saving directly to fullimg, 2 for not saving and not freeing until all focusdepths of snippetidx has been generated and then the 23 lowest are freed and the best is saved directly to fullimg\n"); 
 
@@ -239,10 +215,7 @@ int main(int argc, char** argv)
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
 
-                if (useCKernel)
-                    vol = calcVarianceOfLaplacianCustom(cropped); 
-                else 
-                    vol = calcVarianceOfLaplacian(cropped);
+                vol = calcVarianceOfLaplacian(cropped);
                 check(vol != 0.0, "vol is 0.0!");
                 vols[vol_i++] = vol; 
                 
@@ -300,6 +273,12 @@ int main(int argc, char** argv)
     }
 
     cvReleaseImage(&fullimg);
+
+    printf("Done!\n");
+    for(int i = 0; i < N_BANDS*N_IMGS*24; i++) {
+        printf("%d: lapl: %f var: %f | ", i, clock_time_used_lapl[i], clock_time_used_var[i]);
+        if(i % 8 == 0) printf("\n");
+    }
 
     return 0;
 

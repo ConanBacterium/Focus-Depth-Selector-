@@ -2,7 +2,7 @@
 CC=gcc
 
 # Define any compile-time flags
-CFLAGS=-Wall -g
+CFLAGS=-Wall -g -O3
 
 # Define any directories containing header files
 INCLUDES=-I/usr/local/include/opencv4
