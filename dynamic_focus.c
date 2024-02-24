@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "dbg.h"
+#include <pthread.h>
 
 #define N_IMGS 301
 #define N_FOCUSDEPTHS 24
@@ -33,6 +34,7 @@ double vols[N_BANDS*N_IMGS*24]; // 24 for number of focusdepths
 IplImage *maxVolSnippetPtrs[N_BANDS][N_SNIPPETS]; // for parseMode 3 
 
 struct Crop cropinfos[N_SNIPPETS]; 
+
 
 clock_t start, end;
 double clock_time_used_lapl[N_BANDS*N_IMGS*24];
@@ -96,18 +98,18 @@ double var(short *X, int length) {
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
-    start = clock(); 
+    // start = clock(); 
     cvLaplace(img, laplacian, 1);
-    end = clock(); 
-    clock_time_used_lapl[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
+    // end = clock(); 
+    // clock_time_used_lapl[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
     
     // Cast imageData to short* for correct type access
     short* laplacianData = (short*)laplacian->imageData;
-    start = clock();
+    // start = clock();
     double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
-    end = clock(); 
-    clock_time_used_var[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
-    clock_time_idx++;
+    // end = clock(); 
+    // clock_time_used_var[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
+    // clock_time_idx++;
 
     cvReleaseImage(&laplacian);
 
@@ -163,6 +165,115 @@ int saveCropToFullImg(IplImage* cropped, IplImage* fullimg, int bandidx, int sni
     return 0;
 }
 
+struct DynfocBandArgs {
+    int bandidx; 
+    IplImage* fullimg;
+    int parseMode; 
+    char *inputdir; 
+    int firstBandNo;
+};
+void *dynfocBand(void *dfbArgs) 
+{
+    // TODO have a global flag that is set to 1 if there is a failure, right now a thread can fail and noone will know 
+    struct DynfocBandArgs *args = (struct DynfocBandArgs *)dfbArgs;
+
+    int bandidx = args->bandidx;
+    IplImage* fullimg = args->fullimg;
+    int parseMode = args->parseMode;
+    char *inputdir = args->inputdir;
+    int firstBandNo = args->firstBandNo;
+    printf("thread start with args: \nbandidx %d\nfullimg %p\nparseMode %d\ninputdir %s\nfirstBandNo %d\n\n", bandidx, fullimg, parseMode, inputdir, firstBandNo);
+
+    int nFocusDepths = N_FOCUSDEPTHS;
+    int nImgs = N_IMGS;
+    int shift = CROP_HEIGHT; 
+
+    IplImage* img; IplImage* cropped;
+
+    char filename[100]; // Adjust the size as necessaryk
+    int vol_i = 0; 
+    double vol;
+    int cropcounter = 0; // used to place the crop structs in crops array
+    // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
+    for(int imgidx = 0; imgidx < nImgs; imgidx++) {
+        snprintf(filename, sizeof(filename), "%s/%d/%d.bmp", inputdir, bandidx+firstBandNo, imgidx);
+        img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
+        if (!img) {
+            printf("Could not open or find the image.\n");
+            return NULL;
+        } 
+        if (bandidx == 0 && imgidx == 0) {
+            printf("imgdepth: %d, nChannels: %d\n", img->depth, img->nChannels);
+        }
+
+        int x = 0; int y = 0; 
+        int cropsize_x = img->width;
+        int cropsize_y = shift;
+        for(int cropidx = 0; cropidx < nFocusDepths; cropidx++) {
+            int snippetidx = imgidx + cropidx; // NOTE: zero-based indexing
+            CvRect roi = cvRect(x, y, cropsize_x, cropsize_y);
+            cvSetImageROI(img, roi); 
+
+            cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
+            cvCopy(img, cropped, NULL); 
+
+            vol = calcVarianceOfLaplacian(cropped);
+            check(vol != 0.0, "vol is 0.0!");
+            vols[vol_i++] = vol; 
+            
+            if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
+                // if this crop has higher VOL than previous highest of the same snippet then save
+                // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
+                if(parseMode == 1) {
+                    int rc = saveCropToFullImg(cropped, fullimg, bandidx, snippetidx);
+                    if(rc != 0) {
+                        goto error;
+                    }
+                } else if (parseMode == 2) {
+                    saveCropToStaticArray(cropped, bandidx, snippetidx);
+                } else if (parseMode == 3) {
+                    cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]); // not sure if it's legal to cvReleaseImage(NULL) so maybe this will fail. 
+                    maxVolSnippetPtrs[bandidx][snippetidx] = cropped;
+                }
+                maxVolSnippetVols[bandidx][snippetidx] = vol;
+            }
+
+            if(parseMode == 3) {
+                // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
+                if(cropidx == 0 || (imgidx == N_IMGS-1)) {
+                    int rc = saveCropToFullImg(maxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
+                    if( rc != 0) {
+                        goto error;
+                    } 
+                    cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]);
+                }
+            }
+            cropinfos[cropcounter].imgidx = imgidx;
+            cropinfos[cropcounter].cropidx = cropidx;
+            cropinfos[cropcounter].snippetidx = snippetidx;
+            cropinfos[cropcounter].vol = vol; 
+
+            cvResetImageROI(img); 
+
+            y+=shift;
+        }
+
+        cvReleaseImage(&img);
+        img = NULL;
+        if(parseMode != 3) {
+            cvReleaseImage(&cropped); 
+            cropped = NULL;
+        }
+    }
+
+    return NULL;
+error: 
+    cvReleaseImage(&img);
+    cvReleaseImage(&cropped); 
+
+    return NULL;
+}
+
 int main(int argc, char** argv) 
 {
     if (argc != 6) {
@@ -180,93 +291,29 @@ int main(int argc, char** argv)
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     memset(maxVolSnippetPtrs, 0, sizeof(maxVolSnippetPtrs));
-    int nFocusDepths = N_FOCUSDEPTHS;
-    int nImgs = N_IMGS;
-    int shift = CROP_HEIGHT; 
 
-    IplImage* img; IplImage* cropped;
     IplImage* fullimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), IMG_DEPTH, N_CHANNELS);
 
-    char filename[100]; // Adjust the size as necessaryk
-    int vol_i = 0; 
-    double vol;
+    pthread_t threads[N_BANDS];
+    struct DynfocBandArgs dfbArgs[N_BANDS];
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
-        int cropcounter = 0; // used to place the crop structs in crops array
-        // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
-        for(int imgidx = 0; imgidx < nImgs; imgidx++) {
-            snprintf(filename, sizeof(filename), "%s/%d/%d.bmp", inputdir, bandidx+firstBandNo, imgidx);
-            img = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
-            if (!img) {
-                printf("Could not open or find the image.\n");
-                return -1;
-            } 
-            if (bandidx == 0 && imgidx == 0) {
-                printf("imgdepth: %d, nChannels: %d\n", img->depth, img->nChannels);
-            }
+        dfbArgs[bandidx].bandidx = bandidx; 
+        dfbArgs[bandidx].fullimg = fullimg; 
+        dfbArgs[bandidx].parseMode = parseMode;
+        dfbArgs[bandidx].inputdir = inputdir;  
+        dfbArgs[bandidx].firstBandNo = firstBandNo;
 
-            int x = 0; int y = 0; 
-            int cropsize_x = img->width;
-            int cropsize_y = shift;
-            for(int cropidx = 0; cropidx < nFocusDepths; cropidx++) {
-                int snippetidx = imgidx + cropidx; // NOTE: zero-based indexing
-                CvRect roi = cvRect(x, y, cropsize_x, cropsize_y);
-                cvSetImageROI(img, roi); 
-
-                cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
-                cvCopy(img, cropped, NULL); 
-
-                vol = calcVarianceOfLaplacian(cropped);
-                check(vol != 0.0, "vol is 0.0!");
-                vols[vol_i++] = vol; 
-                
-                if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
-                    // if this crop has higher VOL than previous highest of the same snippet then save
-                    // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
-                    if(parseMode == 1) {
-                        int rc = saveCropToFullImg(cropped, fullimg, bandidx, snippetidx);
-                        if(rc != 0) {
-                            goto error;
-                        }
-                    } else if (parseMode == 2) {
-                        saveCropToStaticArray(cropped, bandidx, snippetidx);
-                    } else if (parseMode == 3) {
-                        cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]); // not sure if it's legal to cvReleaseImage(NULL) so maybe this will fail. 
-                        maxVolSnippetPtrs[bandidx][snippetidx] = cropped;
-                    }
-                    maxVolSnippetVols[bandidx][snippetidx] = vol;
-                }
-
-                if(parseMode == 3) {
-                    // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
-                    if(cropidx == 0 || (imgidx == N_IMGS-1)) {
-                        int rc = saveCropToFullImg(maxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
-                        if( rc != 0) {
-                            goto error;
-                        } 
-                        cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]);
-                    }
-                }
-                cropinfos[cropcounter].imgidx = imgidx;
-                cropinfos[cropcounter].cropidx = cropidx;
-                cropinfos[cropcounter].snippetidx = snippetidx;
-                cropinfos[cropcounter].vol = vol; 
-
-                cvResetImageROI(img); 
-
-                y+=shift;
-            }
-
-            cvReleaseImage(&img);
-            img = NULL;
-            if(parseMode != 3) {
-                cvReleaseImage(&cropped); 
-                cropped = NULL;
-            }
-        }
+        pthread_create(&threads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);
     }
+
+    for(int i = 0; i < N_BANDS; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
     if(!parseMode)
         stitchMaxVolSnippetImageDatas(fullimg); 
     
+    char filename[100];
     snprintf(filename, sizeof(filename), "%s.pgm", jobname);
     if (!cvSaveImage(filename, fullimg, NULL)) {
         printf("Could not save the image.\n");
@@ -275,16 +322,14 @@ int main(int argc, char** argv)
     cvReleaseImage(&fullimg);
 
     printf("Done!\n");
-    for(int i = 0; i < N_BANDS*N_IMGS*24; i++) {
-        printf("%d: lapl: %f var: %f | ", i, clock_time_used_lapl[i], clock_time_used_var[i]);
-        if(i % 8 == 0) printf("\n");
-    }
+    // for(int i = 0; i < N_BANDS*N_IMGS*24; i++) {
+    //     printf("%d: lapl: %f var: %f | ", i, clock_time_used_lapl[i], clock_time_used_var[i]);
+    //     if(i % 8 == 0) printf("\n");
+    // }
 
     return 0;
 
 error: 
-    cvReleaseImage(&img);
-    cvReleaseImage(&cropped); 
     cvReleaseImage(&fullimg);
 
     return -1; 
