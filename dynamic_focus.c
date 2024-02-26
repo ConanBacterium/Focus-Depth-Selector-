@@ -6,7 +6,7 @@
 #include <time.h>
 #include "dbg.h"
 #include <pthread.h>
-#include <parVar.h>
+#include "parVar.h"
 
 #define N_IMGS 301
 #define N_FOCUSDEPTHS 24
@@ -118,12 +118,12 @@ double calcVarianceOfLaplacian(IplImage* img) {
 }
 
 struct pushIntervalToRunningStatArgs {
-    struct RunningStat *rs, 
-    short *buffer, 
-    int start,
-    int end
+    struct RunningStat *rs;
+    short *buffer;
+    int start;
+    int end;
 };
-void pushIntervalToRunningStat(void *params) 
+void *pushIntervalToRunningStat(void *params) 
 {
     // TODO: be mindful of buffer overflows?? also probably not right to call it a buffer
     struct pushIntervalToRunningStatArgs *args = (struct pushIntervalToRunningStatArgs*)params;
@@ -133,7 +133,7 @@ void pushIntervalToRunningStat(void *params)
     int start = args->start;
     int end = args->end;
     for(int i = start; i < end; i++) {
-        RunningStat_push(rs, buffer[i])
+        RunningStat_push(rs, buffer[i]);
     }
 }
 double calcVarianceOfLaplacian2Threads(IplImage* img) 
@@ -171,7 +171,7 @@ double calcVarianceOfLaplacian2Threads(IplImage* img)
 
     RunningStat_merge(&rs1, &rs2); 
 
-    double variance = RunningStat_variance(&rs1)
+    double variance = RunningStat_variance(&rs1);
 
     cvReleaseImage(&laplacian);
 
@@ -234,6 +234,7 @@ struct DynfocBandArgs {
     int parseMode; 
     char *inputdir; 
     int firstBandNo;
+    int parVariance;
 };
 void *dynfocBand(void *dfbArgs) 
 {
@@ -245,6 +246,7 @@ void *dynfocBand(void *dfbArgs)
     int parseMode = args->parseMode;
     char *inputdir = args->inputdir;
     int firstBandNo = args->firstBandNo;
+    int parVariance = args->parVariance;
     printf("thread start with args: \nbandidx %d\nfullimg %p\nparseMode %d\ninputdir %s\nfirstBandNo %d\n\n", bandidx, fullimg, parseMode, inputdir, firstBandNo);
 
     int nFocusDepths = N_FOCUSDEPTHS;
@@ -279,8 +281,10 @@ void *dynfocBand(void *dfbArgs)
 
             cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
             cvCopy(img, cropped, NULL); 
-
-            vol = calcVarianceOfLaplacian(cropped);
+            if(parVariance == 0) 
+                vol = calcVarianceOfLaplacian(cropped);
+            else if(parVariance == 1)
+                vol = calcVarianceOfLaplacian2Threads(cropped);
             check(vol != 0.0, "vol is 0.0!");
             vols[vol_i++] = vol; 
             
@@ -339,8 +343,8 @@ error:
 
 int main(int argc, char** argv) 
 {
-    if (argc != 6) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname parseMode \n", argv[0]);
+    if (argc != 7) {
+        printf("Usage: %s inputdir firstbandNo outputdir jobname parseMode parVar\n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -349,8 +353,15 @@ int main(int argc, char** argv)
     char *outputdir = argv[3];
     char *jobname = argv[4];
     char parseMode = atoi(argv[5]);
-    if(parseMode < 0 || parseMode > 3)
+    if(parseMode < 0 || parseMode > 3) {
         printf("parseMode option should be 0 for saving in static array and then stitching together, 1 for saving directly to fullimg, 2 for not saving and not freeing until all focusdepths of snippetidx has been generated and then the 23 lowest are freed and the best is saved directly to fullimg\n"); 
+        return -1;
+    }
+    int parVariance = atoi(argv[6]);
+    if(parVariance < 0 || parVariance > 1) {
+        printf("parVar must be 0 for non-parallel variance and 1 for parallel variance\n");
+        return -1;
+    }
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     memset(maxVolSnippetPtrs, 0, sizeof(maxVolSnippetPtrs));
@@ -365,6 +376,7 @@ int main(int argc, char** argv)
         dfbArgs[bandidx].parseMode = parseMode;
         dfbArgs[bandidx].inputdir = inputdir;  
         dfbArgs[bandidx].firstBandNo = firstBandNo;
+        dfbArgs[bandidx].parVariance = parVariance;
 
         pthread_create(&threads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);
     }
