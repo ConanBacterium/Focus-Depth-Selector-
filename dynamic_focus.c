@@ -6,6 +6,7 @@
 #include <time.h>
 #include "dbg.h"
 #include <pthread.h>
+#include <parVar.h>
 
 #define N_IMGS 301
 #define N_FOCUSDEPTHS 24
@@ -114,6 +115,68 @@ double calcVarianceOfLaplacian(IplImage* img) {
     cvReleaseImage(&laplacian);
 
     return variance;
+}
+
+struct pushIntervalToRunningStatArgs {
+    struct RunningStat *rs, 
+    short *buffer, 
+    int start,
+    int end
+};
+void pushIntervalToRunningStat(void *params) 
+{
+    // TODO: be mindful of buffer overflows?? also probably not right to call it a buffer
+    struct pushIntervalToRunningStatArgs *args = (struct pushIntervalToRunningStatArgs*)params;
+
+    struct RunningStat *rs = args->rs; 
+    short *buffer = args->buffer;
+    int start = args->start;
+    int end = args->end;
+    for(int i = start; i < end; i++) {
+        RunningStat_push(rs, buffer[i])
+    }
+}
+double calcVarianceOfLaplacian2Threads(IplImage* img) 
+{
+    IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
+
+    cvLaplace(img, laplacian, 1);
+    // TODO ! check if somehow it's possible to do this at the same time as calculating variance - need to know where in the output image it is currently working. Probably not possible unless we change the function
+
+    // Cast imageData to short* for correct type access
+    short* laplacianData = (short*)laplacian->imageData;
+
+    struct RunningStat rs1; 
+    RunningStat_clear(&rs1);
+    struct RunningStat rs2; 
+    RunningStat_clear(&rs2);
+    // spawn pthread and give it half of the array, then calculate the other half, then join and merge the RunningStats
+
+    pthread_t child;
+    struct pushIntervalToRunningStatArgs args1; 
+    args1.rs = &rs2;
+    args1.buffer = laplacianData;
+    args1.start = CROP_HEIGHT * 40; 
+    args1.end = CROP_HEIGHT * 80; 
+    pthread_create(&child, NULL, pushIntervalToRunningStat, (void *)&args1);
+
+    struct pushIntervalToRunningStatArgs args2; 
+    args2.rs = &rs2;
+    args2.buffer = laplacianData;
+    args2.start = 0;
+    args2.end = CROP_HEIGHT * 40-1; 
+    pushIntervalToRunningStat((void *)&args2);
+
+    pthread_join(child, NULL);
+
+    RunningStat_merge(&rs1, &rs2); 
+
+    double variance = RunningStat_variance(&rs1)
+
+    cvReleaseImage(&laplacian);
+
+    return variance;
+
 }
 
 void saveCropToStaticArray(IplImage* cropped, int bandidx, int maxVolSnippetImageDatasIdx) {
