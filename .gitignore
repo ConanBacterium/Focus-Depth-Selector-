@@ -10,6 +10,8 @@ dbg.h
 *.bytes
 *.pgm
 
+Makefile
+
 
 # Object files
 *.o
