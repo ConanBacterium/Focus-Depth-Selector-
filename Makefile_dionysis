@@ -1,0 +1,37 @@
+# Define the compiler
+CC=gcc
+
+# Define any compile-time flags
+CFLAGS=-Wall -g -O3
+
+# Update these paths to match your OpenCV installation location
+OPENCV_INSTALL_DIR=$(HOME)/opencv-install
+
+# Define any directories containing header files
+INCLUDES=-I$(OPENCV_INSTALL_DIR)/include
+
+# Define library paths in LFLAGS and link settings in LIBS
+LFLAGS=-L$(OPENCV_INSTALL_DIR)/lib
+LIBS=-lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
+
+# Define the C source files
+SRCS=dynamic_focus.c
+
+# Define the C object files
+OBJS=$(SRCS:.c=.o)
+
+# Define the executable file
+MAIN=dynfoc
+
+all: $(MAIN)
+	@echo Program compiled
+
+$(MAIN): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
+
+.c.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
+
+clean:
+	$(RM) *.o *~ $(MAIN)
+
