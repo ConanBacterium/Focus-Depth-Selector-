@@ -1,0 +1,34 @@
+# Define the compiler
+CC=gcc
+
+# Define any compile-time flags
+CFLAGS=-Wall -g -O3
+
+# Define any directories containing header files
+#
+INCLUDES=-I$(HOME)/opencv3_build/install/include
+
+# Define library paths and libraries
+LFLAGS=-L$(HOME)/opencv3_build/install/lib -Wl,-rpath=$(HOME)/opencv3_build/install/lib
+LIBS=-lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc
+
+# Define the C source files
+SRCS=dynamic_focus.c
+
+# Define the C object files
+OBJS=$(SRCS:.c=.o)
+
+# Define the executable file
+MAIN=dynfoc
+
+all: $(MAIN)
+	@echo Program compiled
+
+$(MAIN): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
+
+.c.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
+
+clean:
+	$(RM) *.o *~ $(MAIN)

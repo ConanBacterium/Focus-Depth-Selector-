@@ -1,11 +1,16 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/core/core_c.h>
 #include <opencv2/imgcodecs/imgcodecs_c.h>
 #include <opencv2/imgproc/imgproc_c.h>
+#pragma GCC diagnostic pop
 #include <stdio.h>
 #include <time.h>
-#include "dbg.h"
+// #include "dbg.h"
 #include <pthread.h>
+#include <semaphore.h> 
+#include <fcntl.h>
 #include "parVar.h"
 
 #define N_IMGS 301
@@ -117,6 +122,8 @@ double calcVarianceOfLaplacian(IplImage* img) {
     return variance;
 }
 
+
+
 struct pushIntervalToRunningStatArgs {
     struct RunningStat *rs;
     short *buffer;
@@ -136,7 +143,7 @@ void *pushIntervalToRunningStat(void *params)
         RunningStat_push(rs, buffer[i]);
     }
 }
-double calcVarianceOfLaplacian2Threads(IplImage* img) 
+double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img) 
 {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
@@ -154,17 +161,17 @@ double calcVarianceOfLaplacian2Threads(IplImage* img)
 
     pthread_t child;
     struct pushIntervalToRunningStatArgs args1; 
-    args1.rs = &rs2;
+    args1.rs = &rs1;
     args1.buffer = laplacianData;
-    args1.start = CROP_HEIGHT * 40; 
-    args1.end = CROP_HEIGHT * 80; 
+    args1.start = CROP_WIDTH * 40; 
+    args1.end = CROP_WIDTH * 80; 
     pthread_create(&child, NULL, pushIntervalToRunningStat, (void *)&args1);
 
     struct pushIntervalToRunningStatArgs args2; 
     args2.rs = &rs2;
     args2.buffer = laplacianData;
     args2.start = 0;
-    args2.end = CROP_HEIGHT * 40-1; 
+    args2.end = CROP_WIDTH * 40-1; 
     pushIntervalToRunningStat((void *)&args2);
 
     pthread_join(child, NULL);
@@ -176,7 +183,85 @@ double calcVarianceOfLaplacian2Threads(IplImage* img)
     cvReleaseImage(&laplacian);
 
     return variance;
+}
+struct SlaveThreadArgs {
+    sem_t *semProd;
+    sem_t *semCons;
+    int die;
+    int start;
+    int end; 
+    short *buffer;
+    struct RunningStat rs;
+};
+void *slaveVariance(void *params) //TODO rename
+{
+    struct SlaveThreadArgs *args = (struct SlaveThreadArgs*)params; 
 
+    struct timespec start, finish;
+    long idle = 0;
+    long active = 0;
+    while(args->die == 0) {
+        clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+        sem_wait(args->semProd); // wait for master to update RunningStat, start, end and buffer
+        clock_gettime(CLOCK_MONOTONIC_RAW, &finish);
+        idle += (finish.tv_sec - start.tv_sec) * 1000 + (finish.tv_nsec - start.tv_nsec) / 1000000; 
+        if(args->die) {
+            printf("thread signalled to die!\n");
+            break;
+        }
+
+        RunningStat_clear(&args->rs);
+        for(int i = args->start; i < args->end; i++) {
+            RunningStat_push(&args->rs, args->buffer[i]);
+        }
+
+        sem_post(args->semCons); // signal to master that task is done 
+
+        clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+        active += (start.tv_sec - finish.tv_sec) * 1000 + (start.tv_nsec - finish.tv_nsec) / 1000000; 
+
+    }
+    printf("Slave thread spent : %lu ms waiting for semaphore and : %lu ms being active \n", idle, active);
+}
+double calcVarianceOfLaplacian2Threads_masterslave(IplImage* img, struct SlaveThreadArgs *slave, long *idle) 
+{
+    IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
+
+    cvLaplace(img, laplacian, 1); // TODO change this back from 3 to 1
+    // TODO ! check if somehow it's possible to do this at the same time as calculating variance - need to know where in the output image it is currently working. Probably not possible unless we change the function
+
+    // Cast imageData to short* for correct type access
+    short* laplacianData = (short*)laplacian->imageData;
+
+    slave->buffer = laplacianData;
+    slave->start = 40 * CROP_WIDTH;
+    slave->end = 80 * CROP_WIDTH;
+    
+    sem_post(slave->semProd); // signal to t2 that it can start the variance calculations
+
+    struct RunningStat rs; 
+    RunningStat_clear(&rs);
+    int start = 0;
+    int end = 40-1 * CROP_WIDTH;
+
+    for(int i = start; i < end; i++) {
+        RunningStat_push(&rs, laplacianData[i]);
+    }
+
+    struct timespec tStart, tFinish;
+
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tStart);
+    sem_wait(slave->semCons); // wait for runningstat to be ready 
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tFinish);
+    *idle += (tFinish.tv_sec - tStart.tv_sec) * 1000 + (tFinish.tv_nsec - tStart.tv_nsec) / 1000000; 
+
+    RunningStat_merge(&rs, &slave->rs); 
+
+    double variance = RunningStat_variance(&rs);
+
+    cvReleaseImage(&laplacian);
+
+    return variance;
 }
 
 void saveCropToStaticArray(IplImage* cropped, int bandidx, int maxVolSnippetImageDatasIdx) {
@@ -234,7 +319,8 @@ struct DynfocBandArgs {
     int parseMode; 
     char *inputdir; 
     int firstBandNo;
-    int parVariance;
+    int parVarMode;
+    struct SlaveThreadArgs *slave;
 };
 void *dynfocBand(void *dfbArgs) 
 {
@@ -246,7 +332,9 @@ void *dynfocBand(void *dfbArgs)
     int parseMode = args->parseMode;
     char *inputdir = args->inputdir;
     int firstBandNo = args->firstBandNo;
-    int parVariance = args->parVariance;
+    int parVarMode = args->parVarMode;
+    struct SlaveThreadArgs *slave = args->slave;
+
     printf("thread start with args: \nbandidx %d\nfullimg %p\nparseMode %d\ninputdir %s\nfirstBandNo %d\n\n", bandidx, fullimg, parseMode, inputdir, firstBandNo);
 
     int nFocusDepths = N_FOCUSDEPTHS;
@@ -259,6 +347,7 @@ void *dynfocBand(void *dfbArgs)
     int vol_i = 0; 
     double vol;
     int cropcounter = 0; // used to place the crop structs in crops array
+    long idle = 0; // used to keep track of how much time the thread is spent waiting for semaphore
     // loop through 301 imgs and get their VOL and the crop with highest vol of a snippet gets saved in maxVolSnippetImageDatas
     for(int imgidx = 0; imgidx < nImgs; imgidx++) {
         snprintf(filename, sizeof(filename), "%s/%d/%d.bmp", inputdir, bandidx+firstBandNo, imgidx);
@@ -281,11 +370,14 @@ void *dynfocBand(void *dfbArgs)
 
             cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
             cvCopy(img, cropped, NULL); 
-            if(parVariance == 0) 
+            if(parVarMode == 0) 
                 vol = calcVarianceOfLaplacian(cropped);
-            else if(parVariance == 1)
-                vol = calcVarianceOfLaplacian2Threads(cropped);
-            check(vol != 0.0, "vol is 0.0!");
+            else if(parVarMode == 1)
+                vol = calcVarianceOfLaplacian2Threads_pthreadRecreated(cropped);
+            else if(parVarMode == 2)
+                vol = calcVarianceOfLaplacian2Threads_masterslave(cropped, slave, &idle);
+            
+            // check(vol != 0.0, "vol is 0.0!");
             vols[vol_i++] = vol; 
             
             if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
@@ -333,6 +425,8 @@ void *dynfocBand(void *dfbArgs)
         }
     }
 
+    printf("Master thread spent : %lu ms waiting for semaphore\n", idle);
+
     return NULL;
 error: 
     cvReleaseImage(&img);
@@ -344,7 +438,7 @@ error:
 int main(int argc, char** argv) 
 {
     if (argc != 7) {
-        printf("Usage: %s inputdir firstbandNo outputdir jobname parseMode parVar\n", argv[0]);
+        printf("Usage: %s inputdir firstbandNo outputdir jobname parseMode parVarMode\n", argv[0]);
         return 1; // Exit with an error code
     }
 
@@ -357,9 +451,9 @@ int main(int argc, char** argv)
         printf("parseMode option should be 0 for saving in static array and then stitching together, 1 for saving directly to fullimg, 2 for not saving and not freeing until all focusdepths of snippetidx has been generated and then the 23 lowest are freed and the best is saved directly to fullimg\n"); 
         return -1;
     }
-    int parVariance = atoi(argv[6]);
-    if(parVariance < 0 || parVariance > 1) {
-        printf("parVar must be 0 for non-parallel variance and 1 for parallel variance\n");
+    int parVarMode = atoi(argv[6]);
+    if(parVarMode < 0 || parVarMode > 2) {
+        printf("parVar must be 0 for non-parallel variance and 1 for twothreaded variance with helper thread created and killed pr img and 2 for twothreaded variance with worker thread that is persistent throughout\n");
         return -1;
     }
 
@@ -368,7 +462,11 @@ int main(int argc, char** argv)
 
     IplImage* fullimg = cvCreateImage(cvSize(CROP_WIDTH*N_BANDS, CROP_HEIGHT * N_SNIPPETS), IMG_DEPTH, N_CHANNELS);
 
-    pthread_t threads[N_BANDS];
+    pthread_t masterthreads[N_BANDS];
+    pthread_t slavethreads[N_BANDS];
+    struct SlaveThreadArgs slavethreadargs[N_BANDS];
+    char *producerNames[] =  {"semProd1", "semProd2", "semProd3", "semProd4", "semProd5", "semProd6", "semProd7", "semProd8"};
+    char *consumerNames[] =  {"semCons1", "semCons2", "semCons3", "semCons4", "semCons5", "semCons6", "semCons7", "semCons8"};
     struct DynfocBandArgs dfbArgs[N_BANDS];
     for(int bandidx = 0; bandidx < N_BANDS; bandidx++) {
         dfbArgs[bandidx].bandidx = bandidx; 
@@ -376,13 +474,57 @@ int main(int argc, char** argv)
         dfbArgs[bandidx].parseMode = parseMode;
         dfbArgs[bandidx].inputdir = inputdir;  
         dfbArgs[bandidx].firstBandNo = firstBandNo;
-        dfbArgs[bandidx].parVariance = parVariance;
+        dfbArgs[bandidx].parVarMode = parVarMode;
+        dfbArgs[bandidx].slave = &slavethreadargs[bandidx];
 
-        pthread_create(&threads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);
+        sem_unlink(producerNames[bandidx]);
+        sem_t *semProd = sem_open(producerNames[bandidx], O_CREAT, 0660, 0);
+        if (semProd == SEM_FAILED) {
+            printf("sem_open producer open failed!\n");
+            return -1;
+        }
+
+        sem_unlink(consumerNames[bandidx]);
+        sem_t *semCons = sem_open(consumerNames[bandidx], O_CREAT, 0660, 0);
+        if (semCons == SEM_FAILED) {
+            printf("sem_open producer open failed!\n");
+            return -1;
+        }
+
+        slavethreadargs[bandidx] =  (struct SlaveThreadArgs){
+            .semProd = semProd,
+            .semCons = semCons,
+            .die = 0,
+            .start = 0,
+            .end = 0,
+            .buffer = NULL,
+            .rs = {
+                .m_n = 0,
+                .m_oldM = 0, 
+                .m_newM = 0, 
+                .m_oldS = 0, 
+                .m_newS = 0
+            }
+        }; 
+
+        pthread_create(&slavethreads[bandidx], NULL, slaveVariance, (void *)&slavethreadargs[bandidx]); 
+        pthread_create(&masterthreads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);
     }
 
     for(int i = 0; i < N_BANDS; i++) {
-        pthread_join(threads[i], NULL);
+        pthread_join(masterthreads[i], NULL);
+    }
+
+    for(int i = 0; i < N_BANDS; i++) {
+        slavethreadargs[i].die = 1; 
+        sem_post(slavethreadargs[i].semProd);
+        sem_post(slavethreadargs[i].semCons);
+    }
+
+    for (int i = 0; i < N_BANDS; i++) {
+        pthread_join(slavethreads[i], NULL);
+        sem_close(slavethreadargs[i].semProd);
+        sem_close(slavethreadargs[i].semCons);
     }
 
     if(!parseMode)
@@ -397,10 +539,6 @@ int main(int argc, char** argv)
     cvReleaseImage(&fullimg);
 
     printf("Done!\n");
-    // for(int i = 0; i < N_BANDS*N_IMGS*24; i++) {
-    //     printf("%d: lapl: %f var: %f | ", i, clock_time_used_lapl[i], clock_time_used_var[i]);
-    //     if(i % 8 == 0) printf("\n");
-    // }
 
     return 0;
 
