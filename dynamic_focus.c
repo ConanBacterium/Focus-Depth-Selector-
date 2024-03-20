@@ -104,24 +104,17 @@ double var(short *X, int length) {
 double calcVarianceOfLaplacian(IplImage* img) {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
-    // start = clock(); 
     cvLaplace(img, laplacian, 1);
-    // end = clock(); 
-    // clock_time_used_lapl[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
     
     // Cast imageData to short* for correct type access
     short* laplacianData = (short*)laplacian->imageData;
-    // start = clock();
+
     double variance = var(laplacianData, CROP_HEIGHT * CROP_WIDTH);
-    // end = clock(); 
-    // clock_time_used_var[clock_time_idx] = ((double)(end - start)) / CLOCKS_PER_SEC;
-    // clock_time_idx++;
 
     cvReleaseImage(&laplacian);
 
     return variance;
 }
-
 
 
 struct pushIntervalToRunningStatArgs {
