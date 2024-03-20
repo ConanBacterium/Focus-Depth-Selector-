@@ -200,3 +200,11 @@ sys     0m9.731s
 
 
 (results on dionysis)
+
+
+
+I timed the VOL calculation and the loading of bmp to sadly find out that I was wrong b4 when I tested that the var took longer than laplacian.... this explains my unimpressive results and kind of means I need to do everything from scratch if I want real performance gains
+createimgtime: 0 (total 0) (I mistook this for the img loading... IM AN IDIOT !! )
+lapltime: 2 (total 15120)
+vartime: 0 (total 672)
+bigloadtime: 2 (total 17939)
