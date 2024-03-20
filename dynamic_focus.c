@@ -388,7 +388,7 @@ void *dynfocBand(void *dfbArgs)
                     maxVolSnippetPtrs[bandidx][snippetidx] = cropped;
                 }
                 maxVolSnippetVols[bandidx][snippetidx] = vol;
-            }
+            } 
 
             if(parseMode == 3) {
                 // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
