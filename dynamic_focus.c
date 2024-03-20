@@ -335,7 +335,7 @@ void *dynfocBand(void *dfbArgs)
     int parVarMode = args->parVarMode;
     struct SlaveThreadArgs *slave = args->slave;
 
-    printf("thread start with args: \nbandidx %d\nfullimg %p\nparseMode %d\ninputdir %s\nfirstBandNo %d\n\n", bandidx, fullimg, parseMode, inputdir, firstBandNo);
+    // printf("thread start with args: \nbandidx %d\nfullimg %p\nparseMode %d\ninputdir %s\nfirstBandNo %d\n\n", bandidx, fullimg, parseMode, inputdir, firstBandNo);
 
     int nFocusDepths = N_FOCUSDEPTHS;
     int nImgs = N_IMGS;
@@ -491,6 +491,7 @@ int main(int argc, char** argv)
             return -1;
         }
 
+        // note: important that this gets created before the masterthread is created, as otherwise we will have race condition
         slavethreadargs[bandidx] =  (struct SlaveThreadArgs){
             .semProd = semProd,
             .semCons = semCons,
@@ -507,24 +508,28 @@ int main(int argc, char** argv)
             }
         }; 
 
-        pthread_create(&slavethreads[bandidx], NULL, slaveVariance, (void *)&slavethreadargs[bandidx]); 
-        pthread_create(&masterthreads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);
+        pthread_create(&masterthreads[bandidx], NULL, dynfocBand, (void *)&dfbArgs[bandidx]);  
+        if(parVarMode == 2) {
+            pthread_create(&slavethreads[bandidx], NULL, slaveVariance, (void *)&slavethreadargs[bandidx]); 
+        }
     }
 
     for(int i = 0; i < N_BANDS; i++) {
         pthread_join(masterthreads[i], NULL);
     }
 
-    for(int i = 0; i < N_BANDS; i++) {
-        slavethreadargs[i].die = 1; 
-        sem_post(slavethreadargs[i].semProd);
-        sem_post(slavethreadargs[i].semCons);
-    }
+    if(parVarMode == 2) {
+        for(int i = 0; i < N_BANDS; i++) {
+            slavethreadargs[i].die = 1; 
+            sem_post(slavethreadargs[i].semProd);
+            sem_post(slavethreadargs[i].semCons);
+        }
 
-    for (int i = 0; i < N_BANDS; i++) {
-        pthread_join(slavethreads[i], NULL);
-        sem_close(slavethreadargs[i].semProd);
-        sem_close(slavethreadargs[i].semCons);
+        for (int i = 0; i < N_BANDS; i++) {
+            pthread_join(slavethreads[i], NULL);
+            sem_close(slavethreadargs[i].semProd);
+            sem_close(slavethreadargs[i].semCons);
+        }
     }
 
     if(!parseMode)

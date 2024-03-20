@@ -22,9 +22,10 @@ I see no other optimisations apart from loop unrolling (maybe) and using threads
 ----------------
 CURRENT THOUGHTS (2): 
 
-I added threads. I have 2 modes: 
+I added threads. I have 3 modes: 
+1) 1 thread per band which - the bands are completely independent of each other. I timed the operations, and it seems that calculating the variance is about ten times slower than applying laplacian transformation on it, so I decided to try to do parallel variance calculations. 
 
-1) Start 1 masterthread pr band, and everytime an img is loaded and transformed to laplacian spawn a new slavethread that will calculate half of the img variance while the masterthread calculates the other variance. The slave thread terminates after it calculates, and the master thread waits for its termination. 
+2) Start 1 masterthread pr band, and everytime an img is loaded and transformed to laplacian spawn a new slavethread that will calculate half of the img variance while the masterthread calculates the other variance. The slave thread terminates after it calculates, and the master thread waits for its termination. 
 ```
 double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img) {
     imgBuffer = transformImgBlabla();
@@ -38,7 +39,7 @@ double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img) {
     return mergeTheTwoVariances();
 }
 ```
-2) Start 1 masterthread pr band and 1 slavethread per band. So instead of the masterthreads respawning the slave thread, the slavethreads wait for the master thread to signal it to calculate the variance of the buffer, and the slavethread signals to the masterthread when it has finished calculating the variance. This way the threads are only spawned once, and time should be saved because syscalls are expensive. 
+3) Start 1 masterthread pr band and 1 slavethread per band. So instead of the masterthreads respawning the slave thread, the slavethreads wait for the master thread to signal it to calculate the variance of the buffer, and the slavethread signals to the masterthread when it has finished calculating the variance. This way the threads are only spawned once, and time should be saved because syscalls are expensive. 
 ```
 semProd capacity 0;
 semCons capacity 0; 
@@ -76,6 +77,110 @@ double calcVarianceOfLaplacian2Threads_masterslave(IplImage* img, struct SlaveTh
     return mergeVariances;
 }
 ```
-I probably have a bug, because the second mode is twice as slow. 
+I probably have a bug, because the third mode is twice as slow as second mode. 
 
- 
+(results on my own pc)
+
+FULL: 
+jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynfoc ../tape1/ 0 . tape11 3 2
+imgdepth: 8, nChannels: 1
+Master thread spent : 217 ms waiting for semaphore
+Master thread spent : 215 ms waiting for semaphore
+Master thread spent : 251 ms waiting for semaphore
+Master thread spent : 193 ms waiting for semaphore
+Master thread spent : 232 ms waiting for semaphore
+Master thread spent : 183 ms waiting for semaphore
+Master thread spent : 214 ms waiting for semaphore
+Master thread spent : 220 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 57392 ms waiting for semaphore and : 152 ms being active
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 57415 ms waiting for semaphore and : 171 ms being active
+Slave thread spent : 57416 ms waiting for semaphore and : 129 ms being active
+thread signalled to die!
+Slave thread spent : 57353 ms waiting for semaphore and : 191 ms being active
+thread signalled to die!
+Slave thread spent : 57374 ms waiting for semaphore and : 112 ms being active
+thread signalled to die!
+Slave thread spent : 57393 ms waiting for semaphore and : 153 ms being active
+thread signalled to die!
+Slave thread spent : 57400 ms waiting for semaphore and : 170 ms being active
+thread signalled to die!
+Slave thread spent : 57462 ms waiting for semaphore and : 158 ms being active
+Done!
+
+real    1m10.892s
+user    3m48.312s
+sys     0m12.079s
+jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynfoc ../tape1/ 0 . tape11 3 1
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+
+real    1m12.791s
+user    4m9.074s
+sys     0m14.717s
+jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynfoc ../tape1/ 0 . tape11 3 0
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+
+real    1m15.543s
+user    4m40.586s
+sys     0m12.580s
+
+(2)
+Here I give more results
+parVarMode 2: 
+real    1m15.072s
+user    4m26.119s
+sys     0m13.533s
+-
+real    1m15.036s
+user    4m33.778s
+sys     0m16.515s
+-
+real    1m18.255s
+user    4m44.498s
+sys     0m17.661s
+
+parVarMode 1: 
+real    1m19.059s
+user    4m36.894s
+sys     0m14.376s
+-
+real    1m17.764s
+user    4m41.742s
+sys     0m16.341s
+-
+real    1m7.297s
+user    3m48.573s
+sys     0m11.936s
+
+parVarMode 0: 
+real    1m17.862s
+user    5m0.081s
+sys     0m14.763s
+-
+real    1m19.966s
+user    5m13.118s
+sys     0m13.380s
+-
+real    1m14.110s
+user    4m15.782s
+sys     0m9.731s
