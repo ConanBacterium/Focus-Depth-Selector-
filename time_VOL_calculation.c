@@ -116,4 +116,7 @@ createimgtime: 0 (total 0)
 lapltime: 2 (total 15120)
 vartime: 0 (total 672)
 bigloadtime: 2 (total 17939)
+
+--- total = 15120+672+17939 = 33731 
+vartime: 672 / 33731 = ~2% of the workload. Makes no sense to optimize it !!!!!!
 */
