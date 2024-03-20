@@ -452,7 +452,7 @@ int main(int argc, char** argv)
         return -1;
     }
     int parVarMode = atoi(argv[6]);
-    if(parVarMode < 0 || parVarMode > 2) {
+    if(parVarMode < 0 || parVarMode > 3) {
         printf("parVar must be 0 for non-parallel variance and 1 for twothreaded variance with helper thread created and killed pr img and 2 for twothreaded variance with worker thread that is persistent throughout\n");
         return -1;
     }
