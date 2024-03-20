@@ -77,9 +77,22 @@ double calcVarianceOfLaplacian2Threads_masterslave(IplImage* img, struct SlaveTh
     return mergeVariances;
 }
 ```
-I probably have a bug, because the third mode is twice as slow as second mode. 
+On dionysis the 3rd mode is about twice as slow as 2nd mode, which is different from my computer. Maybe the threads are sent to different numa nodes?? 
 
-(results on my own pc)
+parVarMode 2:
+real    0m38.061s
+user    4m28.108s
+sys     0m19.308s
+parVarMode 1:
+real    0m20.375s
+user    2m7.131s
+sys     0m9.826s
+parVarMode 0: 
+real    0m24.820s
+user    2m44.919s
+sys     0m10.150s
+
+(the following are results on my own pc)
 
 FULL: 
 jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynfoc ../tape1/ 0 . tape11 3 2
@@ -184,3 +197,6 @@ sys     0m13.380s
 real    1m14.110s
 user    4m15.782s
 sys     0m9.731s
+
+
+(results on dionysis)
