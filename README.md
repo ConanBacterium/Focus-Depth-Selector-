@@ -208,3 +208,73 @@ createimgtime: 0 (total 0) (I mistook this for the img loading... IM AN IDIOT !!
 lapltime: 2 (total 15120)
 vartime: 0 (total 672)
 bigloadtime: 2 (total 17939)
+
+
+so in dynamic_focus_propermultithreading the parallelized operation is much larger (it's both lapl and vol together), which minimizes the time the slaves are idle: 
+jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynfoc ../tape1/ 0 . tape11 3 2
+imgdepth: 8, nChannels: 1
+Master thread spent : 505 ms waiting for semaphore
+Master thread spent : 455 ms waiting for semaphore
+Master thread spent : 486 ms waiting for semaphore
+Master thread spent : 456 ms waiting for semaphore
+Master thread spent : 463 ms waiting for semaphore
+Master thread spent : 502 ms waiting for semaphore
+Master thread spent : 451 ms waiting for semaphore
+Master thread spent : 472 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 58478 ms waiting for semaphore and : 386 ms being active
+thread signalled to die!
+Slave thread spent : 58537 ms waiting for semaphore and : 360 ms being active
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 58548 ms waiting for semaphore and : 343 ms being active
+Slave thread spent : 58519 ms waiting for semaphore and : 364 ms being active
+thread signalled to die!
+Slave thread spent : 58524 ms waiting for semaphore and : 362 ms being active
+thread signalled to die!
+Slave thread spent : 58530 ms waiting for semaphore and : 334 ms being active
+thread signalled to die!
+Slave thread spent : 58454 ms waiting for semaphore and : 384 ms being active
+thread signalled to die!
+Slave thread spent : 58523 ms waiting for semaphore and : 391 ms being active
+Done!
+
+real    1m13.306s
+user    4m3.916s
+sys     0m12.857s
+
+In the results above there isn't any performance gain, but that is because the master thread has to wait too long - so the portion of the workload that the thread should do should be shortened... I will try that now. (on my own computer)
+
+jaro@jaro:/mnt/c/Users/jacro/Documents/Code/Dynamic_Focus/Focus-Depth-Selector-$ time ./dynamic_focus_propermultithreading ../tape1 0 wa
+imgdepth: 8, nChannels: 1
+Master thread spent : 4 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 7 ms waiting for semaphore
+Master thread spent : 4 ms waiting for semaphore
+Master thread spent : 5 ms waiting for semaphore
+Master thread spent : 11 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 49265 ms waiting for semaphore and : 14389 ms being active
+thread signalled to die!
+Slave thread spent : 49275 ms waiting for semaphore and : 14393 ms being active
+thread signalled to die!
+Slave thread spent : 49279 ms waiting for semaphore and : 14384 ms being active
+thread signalled to die!
+Slave thread spent : 49101 ms waiting for semaphore and : 14564 ms being active
+thread signalled to die!
+Slave thread spent : 49056 ms waiting for semaphore and : 14602 ms being active
+thread signalled to die!
+Slave thread spent : 49532 ms waiting for semaphore and : 14124 ms being active
+thread signalled to die!
+Slave thread spent : 49168 ms waiting for semaphore and : 14473 ms being active
+thread signalled to die!
+Slave thread spent : 49409 ms waiting for semaphore and : 14252 ms being active
+Done!
+
+real    1m9.435s
+user    4m59.510s
+sys     0m12.623s
+
+that is with slave doing 10/24 of the workload... so the threads are much less idle than in the other parallel variance solution, yet it's not much faster ?? VERY ODD 

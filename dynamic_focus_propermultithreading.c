@@ -221,7 +221,7 @@ void *dynfocBand(void *dfbArgs)
 
         // now need to delegate the cropOps to threads... For now there are just one helper thread for this !! 
         slave->start = 0; 
-        slave->end = 11; 
+        slave->end = 10; 
         slave->cropOpsBuffer = cropOps;
         sem_post(slave->semProd); // signal to slave that he may start 
 
@@ -258,7 +258,7 @@ int main(int argc, char** argv)
 
     char *inputdir = argv[1];
     int firstBandNo = atoi(argv[2]);
-    char *jobname = argv[4];
+    char *jobname = argv[3];
 
     memset(maxVolSnippetVols, 0, sizeof(maxVolSnippetVols));
     memset(maxVolSnippetPtrs, 0, sizeof(maxVolSnippetPtrs));
