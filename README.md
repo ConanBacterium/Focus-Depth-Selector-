@@ -25,7 +25,7 @@ CURRENT THOUGHTS (2):
 I added threads. I have 2 modes: 
 
 1) Start 1 masterthread pr band, and everytime an img is loaded and transformed to laplacian spawn a new slavethread that will calculate half of the img variance while the masterthread calculates the other variance. The slave thread terminates after it calculates, and the master thread waits for its termination. 
-
+{
     double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img) {
         imgBuffer = transformImgBlabla();
 
@@ -37,9 +37,10 @@ I added threads. I have 2 modes:
 
         return mergeTheTwoVariances();
     }
+}
 
 2) Start 1 masterthread pr band and 1 slavethread per band. So instead of the masterthreads respawning the slave thread, the slavethreads wait for the master thread to signal it to calculate the variance of the buffer, and the slavethread signals to the masterthread when it has finished calculating the variance. This way the threads are only spawned once, and time should be saved because syscalls are expensive. 
-
+{
     semProd capacity 0;
     semCons capacity 0; 
 
@@ -56,26 +57,27 @@ I added threads. I have 2 modes:
         }
     }
 
-double calcVarianceOfLaplacian2Threads_masterslave(IplImage* img, struct SlaveThreadArgs *slave, long *idle) 
-{
-    imgBuffer = transformImgBlabla();
-    
-    sem_post(semProd); 
 
-    struct RunningStat rs; 
-    RunningStat_clear(&rs);
+    double calcVarianceOfLaplacian2Threads_masterslave(IplImage* img, struct SlaveThreadArgs *slave, long *idle) 
+    {
+        imgBuffer = transformImgBlabla();
+        
+        sem_post(semProd); 
 
-    int start = 0;
-    int end = 40-1 * CROP_WIDTH;
-    for(int i = start; i < end; i++) {
-        RunningStat_push(&rs, laplacianData[i]);
+        struct RunningStat rs; 
+        RunningStat_clear(&rs);
+
+        int start = 0;
+        int end = 40-1 * CROP_WIDTH;
+        for(int i = start; i < end; i++) {
+            RunningStat_push(&rs, laplacianData[i]);
+        }
+
+        sem_wait(semCons); 
+        
+        return mergeVariances;
     }
-
-    sem_wait(semCons); 
-    
-    return mergeVariances;
 }
-
 I probably have a bug, because the second mode is twice as slow. 
 
  
