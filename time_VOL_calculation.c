@@ -36,6 +36,11 @@ double var(short *X, int length) {
     return M2 / length;
 }
 
+// long lapltime = 0; 
+// long vartime = 0; 
+// long bandtime = 0; 
+// long bigloadtime = 0; 
+
 double timeCalcVarianceOfLaplacian(IplImage* img, long *createimgtime, long *lapltime, long *vartime) 
 {
     struct timespec start, finish;
