@@ -10,6 +10,11 @@ dbg.h
 *.bytes
 *.pgm
 
+C_baseline_b4_threads
+C_multivar_8bands_parvar
+C_multivar_8bands_parVOL_cropsync
+C_multivar_8bands_parVOL_imgsync
+
 Makefile
 
 
