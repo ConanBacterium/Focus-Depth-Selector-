@@ -80,7 +80,7 @@ void *pushIntervalToRunningStat(void *params)
         RunningStat_push(rs, buffer[i]);
     }
 }
-double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img) 
+double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img, long *idle) 
 {
     IplImage* laplacian = cvCreateImage(cvGetSize(img), IPL_DEPTH_16S, img->nChannels);
 
@@ -111,7 +111,12 @@ double calcVarianceOfLaplacian2Threads_pthreadRecreated(IplImage* img)
     args2.end = CROP_WIDTH * 40-1; 
     pushIntervalToRunningStat((void *)&args2);
 
+    struct timespec tStart, tFinish;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tStart);
     pthread_join(child, NULL);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &tFinish);
+    *idle += (tFinish.tv_sec - tStart.tv_sec) * 1000 + (tFinish.tv_nsec - tStart.tv_nsec) / 1000000;
+
 
     RunningStat_merge(&rs1, &rs2); 
 
@@ -308,7 +313,7 @@ void *dynfocBand(void *dfbArgs)
             if(parVarMode == 0) 
                 vol = calcVarianceOfLaplacian(cropped);
             else if(parVarMode == 1)
-                vol = calcVarianceOfLaplacian2Threads_pthreadRecreated(cropped);
+                vol = calcVarianceOfLaplacian2Threads_pthreadRecreated(cropped, &idle);
             else if(parVarMode == 2)
                 vol = calcVarianceOfLaplacian2Threads_masterslave(cropped, slave, &idle);
             
@@ -353,7 +358,10 @@ void *dynfocBand(void *dfbArgs)
         }
     }
 
-    printf("Master thread spent : %lu ms waiting for semaphore\n", idle);
+    if(parVarMode == 1)
+        printf("Master thread spent : %lu ms waiting for worker to die (sum of waiting times)\n", idle);
+    else if(parVarMode == 2)
+        printf("Master thread spent : %lu ms waiting for semaphore\n", idle);
 
     return NULL;
 error: 
