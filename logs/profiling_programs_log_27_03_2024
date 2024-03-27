@@ -1,0 +1,211 @@
+baselineb4threads parsemode1
+imgdepth: 8, nChannels: 1
+Done!
+baselineb4threads parsemode2
+imgdepth: 8, nChannels: 1
+Done!
+baselineb4threads parsemode3
+imgdepth: 8, nChannels: 1
+Done!
+multithread parvar 0
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+multithread parvar 1
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+multithread parvar 2
+imgdepth: 8, nChannels: 1
+Master thread spent : 20038 ms waiting for semaphore
+Master thread spent : 20523 ms waiting for semaphore
+Master thread spent : 20672 ms waiting for semaphore
+Master thread spent : 21530 ms waiting for semaphore
+Master thread spent : 21419 ms waiting for semaphore
+Master thread spent : 21193 ms waiting for semaphore
+Master thread spent : 21479 ms waiting for semaphore
+Master thread spent : 21673 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 8586 ms waiting for semaphore and : 21477 ms being active 
+thread signalled to die!
+Slave thread spent : 9953 ms waiting for semaphore and : 20035 ms being active 
+thread signalled to die!
+Slave thread spent : 8828 ms waiting for semaphore and : 21418 ms being active 
+thread signalled to die!
+Slave thread spent : 9521 ms waiting for semaphore and : 20518 ms being active 
+thread signalled to die!
+Slave thread spent : 9013 ms waiting for semaphore and : 21193 ms being active 
+thread signalled to die!
+Slave thread spent : 8960 ms waiting for semaphore and : 21527 ms being active 
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 8814 ms waiting for semaphore and : 21672 ms being active 
+Slave thread spent : 9526 ms waiting for semaphore and : 20665 ms being active 
+Done!
+parvol cropsync
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 5 ms waiting for semaphore
+Master thread spent : 7 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 3 ms waiting for semaphore
+Master thread spent : 2 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 2 ms waiting for semaphore
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 5162 ms waiting for semaphore and : 8696 ms being active 
+thread signalled to die!
+Slave thread spent : 5010 ms waiting for semaphore and : 8889 ms being active 
+thread signalled to die!
+Slave thread spent : 5161 ms waiting for semaphore and : 8792 ms being active 
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 5183 ms waiting for semaphore and : 8732 ms being active 
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 5273 ms waiting for semaphore and : 8623 ms being active 
+Slave thread spent : 5030 ms waiting for semaphore and : 8838 ms being active 
+Slave thread spent : 5014 ms waiting for semaphore and : 8937 ms being active 
+Slave thread spent : 5113 ms waiting for semaphore and : 8775 ms being active 
+Done!
+parvol imgsync
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+
+PERF CACHE MISSES
+
+baselineb4threads parsemode1
+imgdepth: 8, nChannels: 1
+Done!
+baselineb4threads parsemode2
+imgdepth: 8, nChannels: 1
+Done!
+baselineb4threads parsemode3
+imgdepth: 8, nChannels: 1
+Done!
+multithread parvar 0
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+multithread parvar 1
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
+multithread parvar 2
+imgdepth: 8, nChannels: 1
+Master thread spent : 19447 ms waiting for semaphore
+Master thread spent : 19054 ms waiting for semaphore
+Master thread spent : 20628 ms waiting for semaphore
+Master thread spent : 21574 ms waiting for semaphore
+Master thread spent : 21528 ms waiting for semaphore
+Master thread spent : 21560 ms waiting for semaphore
+Master thread spent : 21335 ms waiting for semaphore
+Master thread spent : 21675 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 8658 ms waiting for semaphore and : 21328 ms being active 
+thread signalled to die!
+Slave thread spent : 9624 ms waiting for semaphore and : 20618 ms being active 
+thread signalled to die!
+Slave thread spent : 8466 ms waiting for semaphore and : 21675 ms being active 
+thread signalled to die!
+Slave thread spent : 9033 ms waiting for semaphore and : 21528 ms being active 
+thread signalled to die!
+Slave thread spent : 9068 ms waiting for semaphore and : 21574 ms being active 
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 11441 ms waiting for semaphore and : 19051 ms being active 
+thread signalled to die!
+Slave thread spent : 8800 ms waiting for semaphore and : 21555 ms being active 
+Slave thread spent : 11172 ms waiting for semaphore and : 19443 ms being active 
+Done!
+parvol cropsync
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 2 ms waiting for semaphore
+Master thread spent : 3 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 4 ms waiting for semaphore
+thread signalled to die!
+Slave thread spent : 5084 ms waiting for semaphore and : 8764 ms being active 
+thread signalled to die!
+Slave thread spent : 4972 ms waiting for semaphore and : 8890 ms being active 
+thread signalled to die!
+Slave thread spent : 5027 ms waiting for semaphore and : 8871 ms being active 
+thread signalled to die!
+Slave thread spent : 4981 ms waiting for semaphore and : 8846 ms being active 
+thread signalled to die!
+Slave thread spent : 4991 ms waiting for semaphore and : 8866 ms being active 
+thread signalled to die!
+thread signalled to die!
+Slave thread spent : 4810 ms waiting for semaphore and : 9060 ms being active 
+thread signalled to die!
+Slave thread spent : 4953 ms waiting for semaphore and : 8951 ms being active 
+Slave thread spent : 4829 ms waiting for semaphore and : 9023 ms being active 
+Done!
+parvol imgsync
+imgdepth: 8, nChannels: 1
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Master thread spent : 0 ms waiting for semaphore
+Done!
