@@ -209,3 +209,126 @@ Master thread spent : 0 ms waiting for semaphore
 Master thread spent : 0 ms waiting for semaphore
 Master thread spent : 0 ms waiting for semaphore
 Done!
+
+
+
+---------------------------------
+group461@dionysos:~/jaro_dynamic_focus/Focus-Depth-Selector-$ bash profile_programs.sh > logs/profiling_programs_log_27_03_2024
+
+real    3m10.210s
+user    2m55.049s
+sys     0m14.284s
+
+real    3m0.237s
+user    2m45.937s
+sys     0m13.403s
+
+real    2m54.783s
+user    2m44.702s
+sys     0m9.165s
+
+real    0m24.785s
+user    2m44.778s
+sys     0m10.221s
+
+real    0m20.401s
+user    2m7.985s
+sys     0m9.678s
+
+real    0m40.517s
+user    4m32.795s
+sys     0m19.830s
+
+real    0m17.041s
+user    2m54.570s
+sys     0m10.619s
+
+real    0m13.794s
+user    2m45.389s
+sys     0m10.182s
+
+ Performance counter stats for './C_baseline_b4_threads ../tape1 0 . baselineb4threads_parsemode1 1':
+
+       423,972,399      cache-misses
+
+     188.764516567 seconds time elapsed
+
+     173.339123000 seconds user
+      14.515256000 seconds sys
+
+
+
+ Performance counter stats for './C_baseline_b4_threads ../tape1 0 . baselineb4threads_parsemode2 2':
+
+       390,930,375      cache-misses
+
+     180.703949663 seconds time elapsed
+
+     165.881248000 seconds user
+      13.903098000 seconds sys
+
+
+
+ Performance counter stats for './C_baseline_b4_threads ../tape1 0 . baselineb4threads_parsemode3 3':
+
+       304,151,369      cache-misses
+
+     173.350540280 seconds time elapsed
+
+     163.139371000 seconds user
+       9.296545000 seconds sys
+
+
+
+ Performance counter stats for './C_multivar_8bands_parvar ../tape1 0 . multithread_parvar0 3 0':
+
+       612,906,572      cache-misses
+
+      24.749303449 seconds time elapsed
+
+     165.227663000 seconds user
+       9.904862000 seconds sys
+
+
+
+ Performance counter stats for './C_multivar_8bands_parvar ../tape1 0 . multithread_parvar1 3 1':
+
+       794,423,523      cache-misses
+
+      21.491975423 seconds time elapsed
+
+     128.792032000 seconds user
+       9.803513000 seconds sys
+
+
+
+ Performance counter stats for './C_multivar_8bands_parvar ../tape1 0 . multithread_parvar2 3 2':
+
+       882,255,043      cache-misses
+
+      39.946074435 seconds time elapsed
+
+     268.220335000 seconds user
+      20.341507000 seconds sys
+
+
+
+ Performance counter stats for './C_multivar_8bands_parVOL_cropsync ../tape1 0 mutltithread_parvol_cropsync':
+
+       767,815,986      cache-misses
+
+      17.014866438 seconds time elapsed
+
+     175.398111000 seconds user
+      10.404125000 seconds sys
+
+
+
+ Performance counter stats for './C_multivar_8bands_parVOL_imgsync ../tape1 0 . mutltithread_parvol_imgsync':
+
+       630,712,929      cache-misses
+
+      14.063957347 seconds time elapsed
+
+     165.644139000 seconds user
+      10.751230000 seconds sys
