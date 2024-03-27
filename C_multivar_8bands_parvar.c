@@ -1,3 +1,4 @@
+// gcc -Wall -g  -O3 -I$HOME/opencv3_build/install/include C_multivar_8bands_parvar.c -L$HOME/opencv3_build/install/lib -Wl,-rpath=$HOME/opencv3_build/install/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -o C_multivar_8bands_parvar
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-function"
 #include <opencv2/highgui/highgui_c.h>
@@ -22,7 +23,6 @@
 #define N_SNIPPETS 324
 #define IMG_DEPTH 8
 #define N_CHANNELS 1
-
 
 // so basically... there should only ever be 300+24 snippets saved in memory, because we only need to save the ones with the highest score. 
 char maxVolSnippetImageDatas[N_BANDS][N_SNIPPETS][CROP_WIDTH * CROP_HEIGHT]; // ~66mb*8 = ~528mb. should be one dimensional array to facilitate faster stitching back together
@@ -339,10 +339,6 @@ void *dynfocBand(void *dfbArgs)
                     cvReleaseImage(&maxVolSnippetPtrs[bandidx][snippetidx]);
                 }
             }
-            cropinfos[cropcounter].imgidx = imgidx;
-            cropinfos[cropcounter].cropidx = cropidx;
-            cropinfos[cropcounter].snippetidx = snippetidx;
-            cropinfos[cropcounter].vol = vol; 
 
             cvResetImageROI(img); 
 
