@@ -191,7 +191,7 @@ int main(int argc, char** argv)
                 if(parseMode == 3) {
                     // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
                     if(cropidx == 0 || (imgidx == N_IMGS-1)) {
-                        int rc = saveCropToFullImgymaxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
+                        int rc = saveCropToFullImg(maxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
                         if( rc != 0) {
                             goto error;
                         } 
