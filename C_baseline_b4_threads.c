@@ -165,15 +165,19 @@ int main(int argc, char** argv)
                 cropped = cvCreateImage(cvSize(roi.width, roi.height), img->depth, img->nChannels); // should probably move outside of loops, but it's on stack so whatever compiler will take care of it? 
                 cvCopy(img, cropped, NULL); 
 
-                vol = calcVarianceOfLaplacian(cropped);
+                // 2560 x 80 = 124800 bytes = 125 kb
+
+                vol = calcVarianceOfLaplacian(cropped);  // might overwrite the caches? It's a convolution probably, and probably couldn't convolve in-place, but maybe? black box
                 
                 if(maxVolSnippetVols[bandidx][snippetidx] < vol) {
                     // if this crop has higher VOL than previous highest of the same snippet then save
                     // printf("VOL %f is new highest of snippet %d\n", vol, snippetidx);
                     if(parseMode == 1) {
                         saveCropToStaticArray(cropped, bandidx, snippetidx);
+                        cvReleaseImage(&cropped);
                     } else if (parseMode == 2) {
                         int rc = saveCropToFullImg(cropped, fullimg, bandidx, snippetidx);
+                        cvReleaseImage(&cropped);
                         if(rc != 0) {
                             goto error;
                         }
@@ -187,7 +191,7 @@ int main(int argc, char** argv)
                 if(parseMode == 3) {
                     // stitch the supersnippets that are out of view forever into the fullimg. It will always be the first snippet of every image, and every snippet of the last img 
                     if(cropidx == 0 || (imgidx == N_IMGS-1)) {
-                        int rc = saveCropToFullImg(maxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
+                        int rc = saveCropToFullImgymaxVolSnippetPtrs[bandidx][snippetidx], fullimg, bandidx, snippetidx);
                         if( rc != 0) {
                             goto error;
                         } 
